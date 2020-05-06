@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.Constraint;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -17,16 +19,18 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.stereotype.Component;
 
 
-import org.springframework.stereotype.Component;
+
 
 @Component
 @Entity
 @Table(name="users")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="user_id")
@@ -38,6 +42,7 @@ public class User implements Serializable {
 	@Size(min=3,max=12)
 	@Pattern(regexp="^\\w+\\.?\\w+$")
 	private String userName;
+	
 	@ManyToOne
 	@JoinColumn(name="batch_number")
 	private Batch batch;
@@ -55,41 +60,54 @@ public class User implements Serializable {
 	@Size(max=30)
 	@Pattern(regexp="^[a-zA-Z\\u00C0-\\u017F]+[- ]?[a-zA-Z\\u00C0-\\u017F]+$")
 	private String lastName;
+	
 	@NotBlank
 	@Email
 	@Pattern(regexp="^\\w+\\.?\\w+@\\w+\\.[a-zA-Z]{2,4}$")
 	private String email;
+	
 	@NotBlank
 	@Column(name="phone_number")
 	@Pattern(regexp="^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$")
 	private String phoneNumber;
+	
 	@Column(name="is_driver")
 	private boolean isDriver;
+	
 	@Column(name="is_active")
 	private boolean isActive;
+	
 	@Column(name="is_accepting_rides")
 	private boolean isAcceptingRides;
+	
 	@NotBlank
 	@Column(name = "h_address")
 	private String hAddress;
+	
 	@NotBlank
 	@Column(name = "h_city")
 	private String hCity;
+	
 	@NotBlank
 	@Column(name = "h_zip")
 	private String hZip;
+	
 	@NotBlank
 	@Column(name = "h_state")
 	private String hState;
+	
 	@NotBlank
 	@Column(name = "w_address")
 	private String wAddress;
+	
 	@NotBlank
 	@Column(name = "w_city")
 	private String wCity;
+	
 	@NotBlank
 	@Column(name = "w_zip")
 	private String wZip;
+	
 	@NotBlank
 	@Column(name = "w_state")
 	private String wState;
