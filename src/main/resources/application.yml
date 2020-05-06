@@ -43,7 +43,7 @@ spring:
     host: smtp.gmail.com
     username: revaturerideshareapp@gmail.com
     password: revature0302
-    port: 599
+    port: 587
     properties:
       mail:
         smtp:
