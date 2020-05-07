@@ -37,3 +37,22 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+
+spring:            
+  mail:
+    default-encoding: UTF-8
+    host: smtp.gmail.com
+    username: revaturerideshareapp@gmail.com
+    password: revature0302
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth:
+            starttls:
+              enable: true
+    protocol: smtp
+    test-connection: false
+    
+
+            
