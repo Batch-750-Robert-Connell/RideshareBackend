@@ -1,0 +1,13 @@
+{
+    "settings": {
+        "java.configuration.updateBuildConfiguration": "automatic"
+    },
+    "folders": [
+        {
+            "path": "..\\RideshareFrontend"
+        },
+        {
+            "path": "."
+        }
+    ]
+}

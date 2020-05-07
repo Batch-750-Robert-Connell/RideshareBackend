@@ -25,10 +25,11 @@ public class Batch implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@NotBlank(message="Must define batch number")
 	@Column(name="batch_number")
 	private int batchNumber;
 	
-	@NotBlank
+	@NotBlank(message="Must define batch location")
 	@Column(name="batch_location")
 	private String batchLocation;
 	
