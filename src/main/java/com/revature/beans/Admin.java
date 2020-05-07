@@ -35,8 +35,8 @@ public class Admin implements Serializable {
 	
 	@NotBlank
 	@Column(name="user_name")
-	@Size(min=3,max=12)
-	@Pattern(regexp="^\\w+\\.?\\w+$")
+	@Size(min=3,max=12, message="Must be between 3 and 12 characters")
+	@Pattern(regexp="^\\w+\\.?\\w+$", message="Must use valid characters")
 	private String userName;
 	
 	public Admin() {

@@ -35,18 +35,19 @@ public class User implements Serializable {
 	@Valid
 	@NotBlank
 	@Column(name="user_name")
-	@Size(min=3,max=12)
+	@Size(min=3,max=12, message="Must be between 3 and 12 characters")
 	@Pattern(regexp="^\\w+\\.?\\w+$")
 	private String userName;
+	@NotBlank(message="Must define batch number")
 	@ManyToOne
 	@JoinColumn(name="batch_number")
 	private Batch batch;
 	
 	@Valid
-	@NotBlank
+	@NotBlank(message="Must define first name")
 	@Column(name="first_name")
-	@Size(max=30)
-	@Pattern(regexp="^[a-zA-Z\\u00C0-\\u017F]+[- ]?[a-zA-Z\\u00C0-\\u017F]+$")
+	@Size(max=30, message="Max 30 characters")
+	@Pattern(regexp="^[a-zA-Z\\u00C0-\\u017F]+[- ]?[a-zA-Z\\u00C0-\\u017F]+$", message="Must use valid characters")
 	private String firstName;
 	
 	@Valid
