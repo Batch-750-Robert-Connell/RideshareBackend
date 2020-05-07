@@ -272,7 +272,7 @@ public class UserController {
 	 */
 	
 	@ApiOperation(value="Updates user by id", tags= {"User"})
-	@PutMapping
+	@PutMapping("/{id}")
 	public User updateUser(@Valid @RequestBody User user) {
 		//System.out.println(user);
 		return us.updateUser(user);
