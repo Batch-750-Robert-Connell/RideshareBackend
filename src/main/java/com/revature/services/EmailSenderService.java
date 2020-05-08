@@ -22,6 +22,7 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
 import com.revature.beans.Mail;
+import com.revature.beans.User;
 
 @Service
 public class EmailSenderService {
@@ -37,15 +38,14 @@ public class EmailSenderService {
 	private TemplateEngine templateEngine;
 	
 	
-	public void sendSimpleMail(
-	        final String recipientName, final String recipientEmail, final Locale locale)
+	public void sendSimpleMail(User userReq, final String recipientEmail)
 	        throws MessagingException {
 
 	        // Prepare the evaluation context
-	        final Context ctx = new Context(locale);
-	        ctx.setVariable("name", recipientName);
-	        ctx.setVariable("subscriptionDate", new Date());
-	        ctx.setVariable("hobbies", Arrays.asList("Cinema", "Sports", "Music"));
+	        final Context ctx = new Context();
+	        User user = userReq;
+	        ctx.setVariable("user", user);	       
+	        ctx.setVariable("subscriptionDate", new Date());	        
 
 	        // Prepare message using a Spring helper
 	        final MimeMessage mimeMessage = this.emailsender.createMimeMessage();
