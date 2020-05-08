@@ -52,21 +52,21 @@ public class ReservationController {
     private ReservationService rr;
 
     @ApiOperation(value="Returns reservation by driver id", tags= {"Reservation"})
-    @GetMapping("/driver/{id}")
-    public Reservation getReservationByDriverId(@PathVariable("id") int id) {
+    @GetMapping("/driver")
+    public Reservation getReservationByDriverId(@RequestParam("id") int id) {
         return rr.getReservationByDriverId(id);
     }
 
     @ApiOperation(value="Returns reservation by driver id and travel date", tags= {"Reservation"})
-    @GetMapping("/{travelDate}/{id}")
-    public Reservation getReservationByDriverIdAndTravelDate(@PathVariable("id") int id, @PathVariable("travelDate") String travelDate) {
+    @GetMapping("/travel")
+    public Reservation getReservationByDriverIdAndTravelDate(@RequestParam("id") int id, @RequestParam("travelDate") String travelDate) {
         return rr.getReservationByDriverIdAndTravelDate(id, travelDate);
     }
 
     
 	@ApiOperation(value="Returns reservation by rider id", tags= {"Reservation"})
-	@GetMapping("/rider/{id}")
-	public Reservation getReservationByRiderId(@PathVariable("id")int id) {
+	@GetMapping("/rider")
+	public Reservation getReservationByRiderId(@RequestParam("id")int id) {
 		
 		return rr.getReservationByRiderId(id);
     }
