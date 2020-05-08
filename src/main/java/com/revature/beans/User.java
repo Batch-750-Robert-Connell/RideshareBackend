@@ -38,7 +38,7 @@ public class User implements Serializable {
 	@Size(min=3,max=12, message="Must be between 3 and 12 characters")
 	@Pattern(regexp="^\\w+\\.?\\w+$")
 	private String userName;
-	@NotBlank(message="Must define batch number")
+	
 	@ManyToOne
 	@JoinColumn(name="batch_number")
 	private Batch batch;

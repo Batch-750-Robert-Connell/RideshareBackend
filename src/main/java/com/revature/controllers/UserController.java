@@ -32,7 +32,6 @@ import com.revature.beans.Batch;
 import com.revature.beans.User;
 import com.revature.services.BatchService;
 import com.revature.services.DistanceService;
-import com.revature.services.EmailService;
 import com.revature.services.UserService;
 
 import io.swagger.annotations.Api;
@@ -62,8 +61,6 @@ public class UserController {
 	@Autowired
 	private DistanceService ds;
 	
-    @Autowired
-    public EmailService emailService;
 	
 	/**
 	 * HTTP GET method (/users)
@@ -81,26 +78,7 @@ public class UserController {
 		return us.getActiveDrivers();
 	}*/
 	
-    /*
-     * Sending email to driver 
-     */
-	
-    @GetMapping("/email/{driver_id}/{user_id}")
-    public String requestRide(@PathVariable("driver_id") int driver_id, 
-    							@PathVariable("user_id") int user_id ) {
-    	
-    	User driver = us.getUserById(driver_id);
-    	User user = us.getUserById(user_id);
-        
-        emailService.sendSimpleMessage(driver.getEmail(),
-                "Ride request",  user.getUserName()+
-                "is requesting a ride at" + user.gethAddress());
-
-        return "email sent";
-    }
-        
-	
-	
+   
 	@ApiOperation(value="Returns user drivers", tags= {"User"})
 	@GetMapping("/driver/{address}")
 	public List <User> getTopFiveDrivers(@PathVariable("address")String address) throws ApiException, InterruptedException, IOException {
