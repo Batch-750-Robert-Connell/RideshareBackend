@@ -51,5 +51,6 @@ insert into cars values
 (20, 'Pink', 'Mercedes-Benz', 'M-Class', 5, 2000, 20);
 
 insert into reservation values 
-(1, '07-07-2020', 1, 3),
-(2, '07-07-2020', 4, 5);
+(1, 1, '07-07-2020', 2, 6),
+(2, 1, '07-07-2020', 3, 7),
+(3, 1, '07-07-2020', 5, 8);
