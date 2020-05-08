@@ -34,13 +34,11 @@ import com.revature.services.EmailSenderService;
 
 @SpringBootApplication
 @EnableSwagger2
-@ComponentScan("com.revature.services")
-public class Driver implements ApplicationRunner {
+public class Driver {
 	
-	@Autowired
-	private EmailSenderService emailService;
+//	@Autowired
+//	private EmailSenderService emailService;
 	
-	private static Logger log = LoggerFactory.getLogger(Driver.class);
 	/**
 	 * The main method of the Driver class.
 	 * 
@@ -82,23 +80,7 @@ public class Driver implements ApplicationRunner {
 			.apiInfo(apiInfo());
 	}
 
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
-		
-		log.info("START... Sending email");
-        Mail mail = new Mail();
-        mail.setFrom("revaturerideshareapp@gmail.com");//replace with your desired email
-        mail.setMailTo("User.Diver.email@gmail.com");//replace with your desired email
-        mail.setSubject("Email with Spring boot and thymeleaf template!");
-        Map<String, Object> model = new HashMap<String, Object>();
-        model.put("name", "Developer!");
-        model.put("location", "United States");
-        model.put("sign", "Java Developer");
-        mail.setProps(model);
-        emailService.sendEmail(mail);
-        log.info("END... Email sent success");
-		
-	}
+	
 	
 	
 	
