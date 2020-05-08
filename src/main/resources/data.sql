@@ -49,3 +49,7 @@ insert into cars values
 (18, 'Goldenrod', 'Lotus', 'Esprit', 1, 2002, 18),
 (19, 'Red', 'Land Rover', 'Range Rover', 1, 1989, 19),
 (20, 'Pink', 'Mercedes-Benz', 'M-Class', 5, 2000, 20);
+
+insert into reservation values 
+(1, '07-07-2020', 1, 3),
+(2, '07-07-2020', 4, 5);
