@@ -10,7 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 import org.springframework.stereotype.Component;
 
@@ -46,6 +49,11 @@ public class Reservation implements Serializable {
     @ManyToOne
     @JoinColumn(name="rider_id", referencedColumnName = "user_id", nullable=false)
     private User rider;
+    
+	@Min(value=1, message = "Reservation status cannot be less than 1")
+	@Max(value=3, message = "Reservation status cannot be greater than 3")
+	@Column(name="status")
+	private int status;
 
 	public int getReservationId() {
 		return reservationId;
@@ -79,6 +87,20 @@ public class Reservation implements Serializable {
 		this.rider = rider;
 	}
 
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Reservation [reservationId=" + reservationId + ", travelDate=" + travelDate + ", driver=" + driver
+				+ ", rider=" + rider + ", status=" + status + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,6 +108,7 @@ public class Reservation implements Serializable {
 		result = prime * result + ((driver == null) ? 0 : driver.hashCode());
 		result = prime * result + reservationId;
 		result = prime * result + ((rider == null) ? 0 : rider.hashCode());
+		result = prime * result + status;
 		result = prime * result + ((travelDate == null) ? 0 : travelDate.hashCode());
 		return result;
 	}
@@ -111,6 +134,8 @@ public class Reservation implements Serializable {
 				return false;
 		} else if (!rider.equals(other.rider))
 			return false;
+		if (status != other.status)
+			return false;
 		if (travelDate == null) {
 			if (other.travelDate != null)
 				return false;
@@ -119,19 +144,21 @@ public class Reservation implements Serializable {
 		return true;
 	}
 
-	public Reservation(int reservationId, @NotBlank String travelDate, User driver, User rider) {
+	public Reservation(int reservationId, @NotBlank(message = "Travel date is a required field.") String travelDate,
+			User driver, User rider,
+			@Min(value = 1, message = "Reservation status cannot be less than 1") @Max(value = 3, message = "Reservation status cannot be greater than 3") int status) {
 		super();
 		this.reservationId = reservationId;
 		this.travelDate = travelDate;
 		this.driver = driver;
 		this.rider = rider;
+		this.status = status;
 	}
 
 	public Reservation() {
 		super();
 	}
-    
-    
 
-
+	
+	
 }
