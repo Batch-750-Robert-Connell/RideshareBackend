@@ -17,25 +17,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.revature.beans.User;
 import com.revature.services.EmailSenderService;
+import com.revature.services.UserService;
 
 @RestController
 @CrossOrigin
-@ComponentScan("com.revature.services")
 public class EmailController  {
 	
 	private static Logger log = LoggerFactory.getLogger(EmailController.class);
+	
 	@Autowired
 	private EmailSenderService emailService;
 	
+	@Autowired
+	private UserService us;
+	
 	@PostMapping("/email")
-	 public String sendSimpleMail(
-        @RequestParam("recipientName") final String recipientName,
-        @RequestParam("recipientEmail") final String recipientEmail,
+	 public String requestDriverEmail(
+        @RequestParam("Driver_Id") final int driverId,
+        @RequestParam("User_Id") final int UserId,
         final Locale locale)
         throws MessagingException {
+		log.info("Sending Email to request driver");
+		User driver = us.getUserById(driverId);
+		User user = us.getUserById(UserId);
+		String recipientName = user.getFirstName() + " " + user.getLastName();
+		String recipientEmail = driver.getEmail();
+		
 
         this.emailService.sendSimpleMail(recipientName, recipientEmail, locale);
+        log.info("Email send");
         return "redirect:sent.html";
 
 

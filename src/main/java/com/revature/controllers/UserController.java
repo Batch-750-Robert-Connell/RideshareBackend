@@ -61,8 +61,6 @@ public class UserController {
 	@Autowired
 	private UserService us;
 	
-
-	
 	@Autowired
 	private BatchService bs;
 	
@@ -301,22 +299,7 @@ public class UserController {
 		return us.deleteUserById(id);
 	}
 	
-//	@GetMapping("/email")
-//	public void sendEmailToUser() throws MessagingException, IOException {
-//		log.info("START... Sending email");
-//        Mail mail = new Mail();
-//        mail.setFrom("revaturerideshareapp@gmail.com");//replace with your desired email
-//        mail.setMailTo("josvani.l.rivera@gmail.com");//replace with your desired email
-//        mail.setSubject("Email with Spring boot and thymeleaf template!");
-//        Map<String, Object> model = new HashMap<String, Object>();
-//        model.put("name", "Bobbyy");
-//        model.put("location", "United States");
-////        model.put("sign", "Java Developer");
-//        mail.setProps(model);
-//        emailService.sendEmail(mail);
-//        log.info("END... Email sent success");
-//		
-//	}
+
 	
 	
 }
