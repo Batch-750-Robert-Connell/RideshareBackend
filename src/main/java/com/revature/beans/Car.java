@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 import org.springframework.stereotype.Component;
 
@@ -38,16 +40,19 @@ public class Car implements Serializable {
 	
 	private String color;
 	
+	@Min(value=1, message = "Car cannot have less than one seat available")
+	@Max(value=6, message = "Car cannot have more than six seats available")
 	@Positive
 	private int seats;
 	
-	@NotBlank
+	@NotBlank(message = "Fill in all required fields.")
 	private String make;
 	
-	@NotBlank
+	@NotBlank(message ="Fill in all required fields.")
 	private String model;
 	
 	@Positive
+	@Min(value = 1980, message="Cars must from at least year 1980")
 	@Column(name="car_year")
 	private int year;
 	

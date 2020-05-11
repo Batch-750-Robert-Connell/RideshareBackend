@@ -29,7 +29,7 @@ insert into users values
 (21, 'lozintsevl@freewebs.com', 'Lynn', '112 Silo CT', 'Columbia', 'SC', '29201', true, true, true, 'Ozintsev', '704-108-6483', 'lozintsevl', '38 Muir Plaza', 'Pittsburgh', 'PA', '15210', 1);
 
 insert into cars values 
-(1, 'Teal', 'Ford', 'Thunderbird', 3, 1972, 1),
+(1, 'Teal', 'Ford', 'GT', 3, 2005, 1),
 (2, 'Orange', 'Lexus', 'IS', 1, 2012, 2),
 (3, 'Puce', 'Saab', '9-3', 2, 2000, 3),
 (4, 'Fuscia', 'Isuzu', 'Rodeo', 3, 2003, 4),
@@ -49,3 +49,8 @@ insert into cars values
 (18, 'Goldenrod', 'Lotus', 'Esprit', 1, 2002, 18),
 (19, 'Red', 'Land Rover', 'Range Rover', 1, 1989, 19),
 (20, 'Pink', 'Mercedes-Benz', 'M-Class', 5, 2000, 20);
+
+insert into reservation values 
+(1, 1, '07-07-2020', 2, 6),
+(2, 1, '07-07-2020', 3, 7),
+(3, 1, '07-07-2020', 5, 8);
