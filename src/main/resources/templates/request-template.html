@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:remove="all">Ride Request</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+      .button {
+        background-color: #1c87c9;
+        border: none;
+        color: white;
+        padding: 20px 34px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+    </style>
+    </head>
+    <body>
+    	<h2>Driver Request from:</h2>
+        <h3 th:text="${user.firstName} + ' ' +  ${user.lastName}"></h3>
+        <p>
+             Pickup location: <span th:text= "${user.hAddress}"></span>  
+        </p>
+        <br/>
+        <p>Request date:
+        <span th:text="${#dates.format(subscriptionDate)}">28-12-2012</span>
+        </p>
+        <br/>
+        <p th:text= "${user.userId}"/>
+        <a th:href= "@{http://localhost:8080/approve(Driver_Id=${driver.userId},User_Id=${user.userId})}" class="button">Approve</a>
+        <a th:href= "@{http://localhost:8080/decline(id=${user.userId})}" class="button">Decline</a>
+        <br/>
+      
+      
+            Regards, <br/>
+            &emsp; <em>The Rideshare Team</em>
+        
+    </body>
+</html>
