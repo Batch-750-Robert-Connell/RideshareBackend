@@ -8,10 +8,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 import javax.validation.Validator;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,6 +36,7 @@ import com.revature.beans.Batch;
 import com.revature.beans.User;
 import com.revature.services.BatchService;
 import com.revature.services.DistanceService;
+import com.revature.services.EmailSenderService;
 import com.revature.services.UserService;
 
 import io.swagger.annotations.Api;
@@ -51,6 +56,7 @@ import io.swagger.annotations.ApiOperation;
 @CrossOrigin
 @Api(tags= {"User"})
 public class UserController {
+	
 	
 	@Autowired
 	private UserService us;
@@ -293,6 +299,8 @@ public class UserController {
 		
 		return us.deleteUserById(id);
 	}
+	
+
 	
 	
 }
