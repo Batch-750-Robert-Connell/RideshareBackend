@@ -47,10 +47,8 @@ public class EmailController  {
 		User driver = us.getUserById(driverId);
 		User user = us.getUserById(UserId);
 		
-		//model.addObject("user", user);
-		//String recipientName = user.getFirstName() + " " + user.getLastName();
-		//String recipientEmail = driver.getEmail();
-		String recipientEmail = "valio123@yahoo.com";
+		String recipientEmail = driver.getEmail();
+		//String recipientEmail = "valio123@yahoo.com";
 
         this.emailService.sendSimpleMail(user, recipientEmail);
         log.info("Email send");

@@ -57,6 +57,7 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags= {"User"})
 public class UserController {
 	
+	private static Logger log = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
 	private UserService us;
@@ -66,6 +67,10 @@ public class UserController {
 	
 	@Autowired
 	private DistanceService ds;
+	
+	
+	@Autowired
+	private EmailSenderService emailService;
 	
 	/**
 	 * HTTP GET method (/users)
@@ -161,6 +166,23 @@ public class UserController {
 		return us.getUserById(id);
 	}
 	
+	
+	/**
+	 * Update emailVerified field
+	 * @param id represents the user's id.
+	 */
+	
+	@ApiOperation(value="Update emailVerified for user by id", tags= {"User"})
+	@GetMapping("/verify-email")
+	public void updateEmailUserById(@RequestParam("id")int id) {
+		
+		User user = us.getUserById(id);
+		user.setEmailVerified(true);
+		us.updateUser(user);
+		
+	}
+	
+	
 	/**
 	 * HTTP POST method (/users)
 	 * 
@@ -168,11 +190,12 @@ public class UserController {
 	 * @return The newly created object with a 201 code.
 	 * 
 	 * Sends custom error messages when incorrect input is used
+	 * @throws MessagingException 
 	 */
 	
 	@ApiOperation(value="Adds a new user", tags= {"User"})
 	@PostMapping
-	public Map<String, Set<String>> addUser(@Valid @RequestBody User user, BindingResult result) {
+	public Map<String, Set<String>> addUser(@Valid @RequestBody User user, BindingResult result) throws MessagingException {
 		
 		System.out.println(user.isDriver());
 		 Map<String, Set<String>> errors = new HashMap<>();
@@ -261,11 +284,14 @@ public class UserController {
 		    }
 
 			if (errors.isEmpty()) {
-				
+								
+				log.info("Email sending to verify email");
 				user.setBatch(bs.getBatchByNumber(user.getBatch().getBatchNumber()));
 		 		us.addUser(user);
 		 		
-
+		 		// Send email verification when new user registers
+		 		this.emailService.sendVerifyEmail(user, user.getEmail());
+		        log.info("Email send");		 		
 		 	}
 		    return errors;
 		
