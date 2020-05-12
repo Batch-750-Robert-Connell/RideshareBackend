@@ -46,29 +46,34 @@ public class EmailController  {
 		//valio123@yahoo.com
 
         this.emailService.sendRequestHtmlEmail(user,driver, recipientEmail);
-        log.info("Email send");
+        log.info("Email sent");
         return "redirect:sent.html";
 }
+	
 	@GetMapping("/approve")
 	public String approvedEmail(@RequestParam("Driver_Id") final int driverId,
 	 		@RequestParam("User_Id") final int userId) throws MessagingException {
 		
+		log.info("sending approved request message to user");
 		User driver = us.getUserById(driverId);
 		User user = us.getUserById(userId);
 		String recipientEmail = user.getEmail();
 		this.emailService.sendApprovedHtmlEmail(user, driver, recipientEmail);
+        log.info("message sent");
 		return "redirect:sent.approve";
 	}
 	
 	@GetMapping("/decline")
 	public String declineEmail(@RequestParam("id") int userId)throws MessagingException{
+		log.info("sending denied request message to user");
 		User user = us.getUserById(userId);
 		String recipientEmail = user.getEmail();
 		this.emailService.sendDeclineEmail(user, recipientEmail);
+	    log.info("message sent");
 		return "redirect:sent.decline";
 	}
 	
-	public String generateStringPathVariable() {
+	public String generateStringPathVariable() { 
 		
 		 int leftLimit = 97; // letter 'a'
 		    int rightLimit = 122; // letter 'z'
