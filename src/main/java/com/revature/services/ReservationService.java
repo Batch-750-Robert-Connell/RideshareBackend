@@ -11,5 +11,9 @@ public interface ReservationService {
     public Reservation getReservationByRiderId(int riderId);
     
     public Reservation addReservation(Reservation reservation);
+    
+    public Reservation getReservationById(int reservationId);
+    
+    public Reservation updateReservation(Reservation reservation);
 
 }

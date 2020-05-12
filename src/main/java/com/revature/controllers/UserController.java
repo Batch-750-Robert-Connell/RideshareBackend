@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.google.maps.errors.ApiException;
 import com.revature.Driver;
@@ -180,11 +181,15 @@ public class UserController {
 	
 	@ApiOperation(value="Update emailVerified for user by id", tags= {"User"})
 	@GetMapping("/verify-email")
-	public void updateEmailUserById(@RequestParam("id")int id, @RequestParam("token") String token) {
-		
+
+	public RedirectView updateEmailUserById(@RequestParam("id")int id,@RequestParam("token") String token) {
+
 		User user = us.getUserById(id);
 		user.setEmailVerified(true);
 		us.updateUser(user);
+		RedirectView redirectView = new RedirectView();
+	    redirectView.setUrl("http://localhost:4200/");
+	    return redirectView;
 		
 	}
 	

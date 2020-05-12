@@ -17,5 +17,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
 
     @Query("select r from Reservation r where r.rider.userId = ?1")
     public Reservation getReservationByRiderId(int id);
-
+    
 }
