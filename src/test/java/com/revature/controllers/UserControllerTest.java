@@ -26,6 +26,7 @@ import com.revature.beans.Batch;
 import com.revature.beans.User;
 import com.revature.services.BatchService;
 import com.revature.services.DistanceService;
+import com.revature.services.EmailSenderService;
 import com.revature.services.UserService;
 
 @RunWith(SpringRunner.class)
@@ -47,6 +48,9 @@ public class UserControllerTest {
 	@MockBean
 	private DistanceService ds;
 	
+	@MockBean
+	private EmailSenderService ess;
+	
 	@Test
 	public void testGettingUsers() throws Exception {
 		
@@ -63,7 +67,7 @@ public class UserControllerTest {
 	@Test
 	public void testGettingUserById() throws Exception {
 		
-		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789");
+		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true);
 		user.setDriver(true);
 		user.setActive(true);
 		user.setAcceptingRides(true);
@@ -78,7 +82,7 @@ public class UserControllerTest {
 	public void testGettingUserByUsername() throws Exception {
 		
 		List<User> users = new ArrayList<>();
-		users.add(new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789"));
+		users.add(new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true));
 		when(us.getUserByUsername("userName")).thenReturn(users);
 		
 		mvc.perform(get("/users?username=userName"))
@@ -90,12 +94,13 @@ public class UserControllerTest {
 	public void testGettingUserByRole() throws Exception {
 		
 		List<User> users = new ArrayList<>();
-		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789");
+		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true);
 		user.setDriver(true);
 		user.setActive(true);
 		user.setAcceptingRides(true);
 		users.add(user);
 		when(us.getUserByRole(true)).thenReturn(users);
+		System.out.println(users);
 		
 		mvc.perform(get("/users?is-driver=true"))
 		   .andExpect(status().isOk())
@@ -106,7 +111,7 @@ public class UserControllerTest {
 	public void testGettingUserByRoleAndLocation() throws Exception {
 		
 		List<User> users = new ArrayList<>();
-		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789");
+		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true);
 		user.setDriver(true);
 		user.setActive(true);
 		user.setAcceptingRides(true);
@@ -122,7 +127,7 @@ public class UserControllerTest {
 	public void testAddingUser() throws Exception {
 		
 		Batch batch = new Batch(111, "address");
-		User user = new User(1, "userName", batch, "adonis", "cabreja", "adonis@gmail.com", "123-456-789");
+		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true);
 		user.setDriver(true);
 		user.setActive(true);
 		user.setAcceptingRides(true);
@@ -151,7 +156,7 @@ public class UserControllerTest {
 	@Test
 	public void testDeletingUser() throws Exception {
 		
-		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789");
+		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true);
 		String returnedStr = "User with id: " + user.getUserId() + " was deleted.";
 		when(us.deleteUserById(1)).thenReturn(returnedStr);
 		
