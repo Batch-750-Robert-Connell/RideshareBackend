@@ -116,6 +116,7 @@ public class User implements Serializable {
 	@Column(name = "emailVerified", columnDefinition = "boolean default false")
 	private boolean emailVerified = false;
 	
+	
 	public User() {
 		super();
 	}

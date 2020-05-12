@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Set;
 import javax.mail.MessagingException;
 import javax.validation.Valid;
 import javax.validation.Validator;
+import java.security.MessageDigest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +39,7 @@ import com.revature.beans.User;
 import com.revature.services.BatchService;
 import com.revature.services.DistanceService;
 import com.revature.services.EmailSenderService;
+import com.revature.services.MD5Service;
 import com.revature.services.UserService;
 
 import io.swagger.annotations.Api;
@@ -70,6 +73,9 @@ public class UserController {
 
 	@Autowired
 	private EmailSenderService emailService;
+	
+	@Autowired
+	private MD5Service md5;
 	
 
 	/**
@@ -174,7 +180,7 @@ public class UserController {
 	
 	@ApiOperation(value="Update emailVerified for user by id", tags= {"User"})
 	@GetMapping("/verify-email")
-	public void updateEmailUserById(@RequestParam("id")int id) {
+	public void updateEmailUserById(@RequestParam("id")int id, @RequestParam("token") String token) {
 		
 		User user = us.getUserById(id);
 		user.setEmailVerified(true);
@@ -288,9 +294,11 @@ public class UserController {
 				log.info("Email sending to verify email");
 				user.setBatch(bs.getBatchByNumber(user.getBatch().getBatchNumber()));
 		 		us.addUser(user);
+		 				 				 		
+		 		String token = MD5Service.getMd5(new Date().toString());
 		 		
 		 		// Send email verification when new user registers
-		 		this.emailService.sendVerifyEmail(user, user.getEmail());
+		 		this.emailService.sendVerifyEmail(user, user.getEmail(), token);
 		        log.info("Email send");		 		
 		 	}
 		    return errors;

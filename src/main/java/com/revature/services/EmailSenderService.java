@@ -72,13 +72,14 @@ public class EmailSenderService {
 	/*
 	 * Send email to user to verify his/her email
 	 */
-	public void sendVerifyEmail(User userRegister, final String recipientEmail)
+	public void sendVerifyEmail(User userRegister, final String recipientEmail, String token)
 	        throws MessagingException {
 
 	        // Prepare the evaluation context
 	        final Context ctx = new Context();
 	        User user = userRegister;
-	        ctx.setVariable("user", user);	       
+	        ctx.setVariable("user", user);
+	        ctx.setVariable("token", token);	
 	        ctx.setVariable("subscriptionDate", new Date());	        
 
 	        // Prepare message using a Spring helper
