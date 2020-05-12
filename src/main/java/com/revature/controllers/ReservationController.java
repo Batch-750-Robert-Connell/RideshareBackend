@@ -59,7 +59,7 @@ public class ReservationController {
 
     @ApiOperation(value="Returns reservation by driver id and travel date", tags= {"Reservation"})
     @GetMapping("/travel")
-    public Reservation getReservationByDriverIdAndTravelDate(@RequestParam("id") int id, @RequestParam("travelDate") String travelDate) {
+    public Reservation getReservationByDriverIdAndTravelDate(@RequestParam("id") int id, @RequestParam("token") String travelDate) {
         return rr.getReservationByDriverIdAndTravelDate(id, travelDate);
     }
 
