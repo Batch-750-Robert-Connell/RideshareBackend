@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.beans.Reservation;
 import com.revature.beans.User;
 import com.revature.services.EmailSenderService;
+import com.revature.services.ReservationService;
 import com.revature.services.UserService;
 
 @RestController
@@ -30,41 +32,52 @@ public class EmailController  {
 	@Autowired
 	private UserService us;
 	
-	@PostMapping("/email")
+	@Autowired
+	private ReservationService rs;
+	
+	@GetMapping("/email")
 	 public String requestDriverEmail(
 			 		@RequestParam("Driver_Id") final int driverId,
-			 		@RequestParam("User_Id") final int userId)
+			 		@RequestParam("User_Id") final int userId,
+			 		@RequestParam("Reservation_Date") final String resDate)
 			 				throws MessagingException {
 		
 		
 		log.info("Sending Email to request driver");
 		User driver = us.getUserById(driverId);
 		User user = us.getUserById(userId);
-
+		Reservation reservation = new Reservation(0, resDate, driver, user, 1);
+		reservation = rs.addReservation(reservation);
 	
 		String recipientEmail = driver.getEmail();
 		//valio123@yahoo.com
 
-        this.emailService.sendRequestHtmlEmail(user,driver, recipientEmail);
+        this.emailService.sendRequestHtmlEmail(user,driver, reservation, recipientEmail);
         log.info("Email send");
         return "redirect:sent.html";
 }
 	@GetMapping("/approve")
 	public String approvedEmail(@RequestParam("Driver_Id") final int driverId,
-	 		@RequestParam("User_Id") final int userId) throws MessagingException {
+	 		@RequestParam("User_Id") final int userId, @RequestParam("Reservation_Id") int reservationId) throws MessagingException {
 		
 		User driver = us.getUserById(driverId);
 		User user = us.getUserById(userId);
+		Reservation reservation = rs.getReservationById(reservationId);
+		reservation.setStatus(2);
+		reservation = rs.updateReservation(reservation);
 		String recipientEmail = user.getEmail();
-		this.emailService.sendApprovedHtmlEmail(user, driver, recipientEmail);
+		this.emailService.sendApprovedHtmlEmail(user, driver, reservation, recipientEmail);
 		return "redirect:sent.approve";
 	}
 	
 	@GetMapping("/decline")
-	public String declineEmail(@RequestParam("id") int userId)throws MessagingException{
+	public String declineEmail(@RequestParam("id") int userId, @RequestParam("Reservation_Id") int reservationId)throws MessagingException{
 		User user = us.getUserById(userId);
 		String recipientEmail = user.getEmail();
-		this.emailService.sendDeclineEmail(user, recipientEmail);
+		Reservation reservation = rs.getReservationById(reservationId);
+		reservation.setStatus(3);
+		reservation = rs.updateReservation(reservation);
+		this.emailService.sendDeclineEmail(user, reservation, recipientEmail);
 		return "redirect:sent.decline";
 	}
 	

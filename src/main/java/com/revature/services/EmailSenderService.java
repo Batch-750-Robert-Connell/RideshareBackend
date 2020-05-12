@@ -21,7 +21,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
-
+import com.revature.beans.Reservation;
 import com.revature.beans.User;
 
 @Service
@@ -41,7 +41,7 @@ public class EmailSenderService {
 	private TemplateEngine templateEngine;
 	
 	
-	public void sendRequestHtmlEmail(User userReq, User driverReq,final String recipientEmail)
+	public void sendRequestHtmlEmail(User userReq, User driverReq, Reservation reservation, final String recipientEmail)
 	        throws MessagingException {
 
 	        // Prepare the evaluation context
@@ -50,6 +50,7 @@ public class EmailSenderService {
 	        User driver = driverReq;
 	        ctx.setVariable("user", user);	
 	        ctx.setVariable("driver", driver);
+	        ctx.setVariable("reservation", reservation);
 	        ctx.setVariable("subscriptionDate", new Date());	        
 
 	        // Prepare message using a Spring helper
@@ -67,13 +68,14 @@ public class EmailSenderService {
 	        this.emailsender.send(mimeMessage);
 	    }
 	
-	public void sendApprovedHtmlEmail(User userReq, User driverReq,final String recipientEmail) throws MessagingException{
+	public void sendApprovedHtmlEmail(User userReq, User driverReq, Reservation reservation, final String recipientEmail) throws MessagingException{
 		
 		final Context ctx = new Context();
 		User user = userReq;
 		User driver = driverReq;
 		ctx.setVariable("user", user);
 		ctx.setVariable("driver", driver);
+		ctx.setVariable("reservation", reservation);
 		
 		final MimeMessage mimeMessage = this.emailsender.createMimeMessage();
         final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
@@ -89,11 +91,12 @@ public class EmailSenderService {
         this.emailsender.send(mimeMessage);
 	}
 	
-	public void sendDeclineEmail(User userReq, final String recipientEmail) throws MessagingException{
+	public void sendDeclineEmail(User userReq, Reservation reservation, final String recipientEmail) throws MessagingException{
 		
 		final Context ctx = new Context();
 		User user = userReq;
 		ctx.setVariable("user", user);
+		ctx.setVariable("reservation", reservation);
 		
 
 		final MimeMessage mimeMessage = this.emailsender.createMimeMessage();
