@@ -113,6 +113,9 @@ public class User implements Serializable {
 	@Column(name = "w_state")
 	private String wState;
 	
+	@Column(name = "emailVerified", columnDefinition = "boolean default false")
+	private boolean emailVerified = false;
+	
 	public User() {
 		super();
 	}
@@ -136,6 +139,7 @@ public class User implements Serializable {
 		this.isDriver = isDriver;
 		this.isActive = isActive;
 		this.isAcceptingRides = isAcceptingRides;
+	//	this.emailVerified = emailVerified;
 	}
 
 	public User(@NotBlank @Size(min = 3, max = 12) @Pattern(regexp = "^\\w+\\.?\\w+$") String userName, Batch batch,
@@ -161,7 +165,7 @@ public class User implements Serializable {
 			@NotBlank @Size(max = 30) @Pattern(regexp = "^[a-zA-Z]+-?[a-zA-Z]+ ?[a-zA-Z]+-?[a-zA-Z]+$") String firstName,
 			@NotBlank @Size(max = 30) @Pattern(regexp = "^[a-zA-Z]+-?[a-zA-Z]+ ?[a-zA-Z]+-?[a-zA-Z]+$") String lastName,
 			@Email @Pattern(regexp = "^\\w+\\.?\\w+@\\w+\\.[a-zA-Z]{2,4}$") String email,
-			@NotBlank @Pattern(regexp = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$") String phoneNumber) {
+			@NotBlank @Pattern(regexp = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$") String phoneNumber, boolean emailVerified) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -170,10 +174,11 @@ public class User implements Serializable {
 		this.lastName = lastName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
+		this.emailVerified = emailVerified;
 	}
 	public User(int userId, @NotBlank String userName, Batch batch, @NotBlank String firstName,
 			@NotBlank String lastName, @Email String email, @NotBlank String phoneNumber, String hAddress, String hCity,
-			String hZip, String hState, String wAddress, String wCity, String wZip, String wState) {
+			String hZip, String hState, String wAddress, String wCity, String wZip, String wState, boolean emailVerified) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -190,11 +195,12 @@ public class User implements Serializable {
 		this.wCity = wCity;
 		this.wZip = wZip;
 		this.wState = wState;
+		this.emailVerified = emailVerified;
 	}
 	public User(int userId, @NotBlank String userName, Batch batch, @NotBlank String firstName,
 			@NotBlank String lastName, @Email String email, @NotBlank String phoneNumber, boolean isDriver,
 			boolean isActive, boolean isAcceptingRides, String hAddress, String hCity, String hZip, String hState,
-			String wAddress, String wCity, String wZip, String wState) {
+			String wAddress, String wCity, String wZip, String wState, boolean emailVerified) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -214,6 +220,7 @@ public class User implements Serializable {
 		this.wCity = wCity;
 		this.wZip = wZip;
 		this.wState = wState;
+		this.emailVerified = emailVerified;
 	}
 	public int getUserId() {
 		return userId;
@@ -349,11 +356,23 @@ public class User implements Serializable {
 	public String getwState() {
 		return wState;
 	}
-
-
+	
 	public void setwState(String wState) {
 		this.wState = wState;
 	}
+
+
+	public void setEmailVerified(boolean emailVerified) {
+		this.emailVerified = emailVerified;
+	}
+	
+	
+	public boolean isEmailVerified() {
+		return emailVerified;
+	}
+
+
+
 
 
 	@Override

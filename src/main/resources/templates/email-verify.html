@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:remove="all">Please verify you email</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <p>Hello, <span th:text="${user.userName}"></span></p>
+        
+        <p>
+            You have been successfully registered to the Rideshare service on
+            <span th:text="${#dates.format(subscriptionDate)}">28-12-2012</span>
+        </p>
+        
+        <p>
+            Please verify your email clicking on the link 
+           <a th:href="@{http://localhost:8080/users/verify-email(id=${user.userId})}">Verify email</a>
+        </p>
+
+        <p>
+            Regards, <br />
+            &emsp; <em>The Rideshare Team</em>
+        </p>
+    </body>
+</html>

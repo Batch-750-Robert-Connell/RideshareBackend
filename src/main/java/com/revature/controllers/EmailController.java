@@ -42,24 +42,23 @@ public class EmailController  {
 			 		@RequestParam("Reservation_Date") final String resDate)
 			 				throws MessagingException {
 		
-		
 		log.info("Sending Email to request driver");
 		User driver = us.getUserById(driverId);
 		User user = us.getUserById(userId);
 		Reservation reservation = new Reservation(0, resDate, driver, user, 1);
 		reservation = rs.addReservation(reservation);
-	
 		String recipientEmail = driver.getEmail();
-		//valio123@yahoo.com
-
-        this.emailService.sendRequestHtmlEmail(user,driver, reservation, recipientEmail);
-        log.info("Email send");
-        return "redirect:sent.html";
+		
+    this.emailService.sendRequestHtmlEmail(user,driver, reservation, recipientEmail);
+    log.info("Email send");
+    return "redirect:sent.html";
 }
+	
 	@GetMapping("/approve")
 	public String approvedEmail(@RequestParam("Driver_Id") final int driverId,
 	 		@RequestParam("User_Id") final int userId, @RequestParam("Reservation_Id") int reservationId) throws MessagingException {
 		
+		log.info("sending approved request message to user");
 		User driver = us.getUserById(driverId);
 		User user = us.getUserById(userId);
 		Reservation reservation = rs.getReservationById(reservationId);
@@ -67,11 +66,14 @@ public class EmailController  {
 		reservation = rs.updateReservation(reservation);
 		String recipientEmail = user.getEmail();
 		this.emailService.sendApprovedHtmlEmail(user, driver, reservation, recipientEmail);
+    log.info("message sent");
+
 		return "redirect:sent.approve";
 	}
 	
 	@GetMapping("/decline")
 	public String declineEmail(@RequestParam("id") int userId, @RequestParam("Reservation_Id") int reservationId)throws MessagingException{
+    log.info("sending denied request message to user");
 		User user = us.getUserById(userId);
 		String recipientEmail = user.getEmail();
 		Reservation reservation = rs.getReservationById(reservationId);
@@ -81,7 +83,7 @@ public class EmailController  {
 		return "redirect:sent.decline";
 	}
 	
-	public String generateStringPathVariable() {
+	public String generateStringPathVariable() { 
 		
 		 int leftLimit = 97; // letter 'a'
 		    int rightLimit = 122; // letter 'z'
