@@ -36,18 +36,16 @@ public class EmailController  {
 			 		@RequestParam("User_Id") final int userId)
 			 				throws MessagingException {
 		
-		
 		log.info("Sending Email to request driver");
 		User driver = us.getUserById(driverId);
 		User user = us.getUserById(userId);
 
-	
 		String recipientEmail = driver.getEmail();
-		//valio123@yahoo.com
+		
 
-        this.emailService.sendRequestHtmlEmail(user,driver, recipientEmail);
-        log.info("Email sent");
-        return "redirect:sent.html";
+    this.emailService.sendRequestHtmlEmail(user,driver, recipientEmail);
+    log.info("Email sent");
+    return "redirect:sent.html";
 }
 	
 	@GetMapping("/approve")
