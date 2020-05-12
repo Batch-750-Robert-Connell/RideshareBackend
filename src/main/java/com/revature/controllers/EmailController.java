@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.revature.beans.Reservation;
 import com.revature.beans.User;
@@ -47,15 +48,16 @@ public class EmailController  {
 		User user = us.getUserById(userId);
 		Reservation reservation = new Reservation(0, new Date().toString(), driver, user, 1);
 		reservation = rs.addReservation(reservation);
-		String recipientEmail = driver.getEmail();
+		//String recipientEmail = driver.getEmail();
+		String recipientEmail = "josvani.l.rivera@gmail.com";
 		
     this.emailService.sendRequestHtmlEmail(user,driver, reservation, recipientEmail);
     log.info("Email send");
-    return "redirect:sent.html";
+    return "Sent email to driver";
 }
 	
 	@GetMapping("/approve")
-	public String approvedEmail(@RequestParam("Driver_Id") final int driverId,
+	public RedirectView approvedEmail(@RequestParam("Driver_Id") final int driverId,
 	 		@RequestParam("User_Id") final int userId, @RequestParam("Reservation_Id") int reservationId) throws MessagingException {
 		
 		log.info("sending approved request message to user");
@@ -66,13 +68,15 @@ public class EmailController  {
 		reservation = rs.updateReservation(reservation);
 		String recipientEmail = user.getEmail();
 		this.emailService.sendApprovedHtmlEmail(user, driver, reservation, recipientEmail);
-    log.info("message sent");
+		log.info("message sent");
+		RedirectView redirectView = new RedirectView();
+	    redirectView.setUrl("http://localhost:4200/");
+	    return redirectView;
 
-		return "redirect:sent.approve";
 	}
 	
 	@GetMapping("/decline")
-	public String declineEmail(@RequestParam("id") int userId, @RequestParam("Reservation_Id") int reservationId)throws MessagingException{
+	public RedirectView declineEmail(@RequestParam("id") int userId, @RequestParam("Reservation_Id") int reservationId)throws MessagingException{
     log.info("sending denied request message to user");
 		User user = us.getUserById(userId);
 		String recipientEmail = user.getEmail();
@@ -80,7 +84,9 @@ public class EmailController  {
 		reservation.setStatus(3);
 		reservation = rs.updateReservation(reservation);
 		this.emailService.sendDeclineEmail(user, reservation, recipientEmail);
-		return "redirect:sent.decline";
+		RedirectView redirectView = new RedirectView();
+	    redirectView.setUrl("http://localhost:4200/");
+	    return redirectView;
 	}
 	
 	public String generateStringPathVariable() { 
