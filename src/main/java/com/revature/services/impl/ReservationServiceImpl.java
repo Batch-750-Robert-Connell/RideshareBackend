@@ -34,6 +34,14 @@ public class ReservationServiceImpl implements ReservationService {
 		return rr.save(reservation);
 	}
 	
+	public Reservation getReservationById(int reservationId){
+		return rr.getOne(reservationId);
+	}
+	
+	public Reservation updateReservation(Reservation reservation){
+		return rr.save(reservation);
+	}
+	
 	
 
 }
