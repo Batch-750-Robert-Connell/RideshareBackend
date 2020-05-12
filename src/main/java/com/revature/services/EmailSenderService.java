@@ -52,8 +52,7 @@ public class EmailSenderService {
 	        User driver = driverReq;
 	        ctx.setVariable("user", user);	
 	        ctx.setVariable("driver", driver);
-	        ctx.setVariable("reservation", reservation);
-	        ctx.setVariable("subscriptionDate", new Date());	        
+	        ctx.setVariable("reservation", reservation);	        
 
 	        // Prepare message using a Spring helper
 	        final MimeMessage mimeMessage = this.emailsender.createMimeMessage();

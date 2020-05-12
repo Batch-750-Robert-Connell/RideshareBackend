@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 
+import java.util.Date;
 import java.util.Random;
 
 import javax.mail.MessagingException;
@@ -38,14 +39,13 @@ public class EmailController  {
 	@GetMapping("/email")
 	 public String requestDriverEmail(
 			 		@RequestParam("Driver_Id") final int driverId,
-			 		@RequestParam("User_Id") final int userId,
-			 		@RequestParam("Reservation_Date") final String resDate)
+			 		@RequestParam("User_Id") final int userId)
 			 				throws MessagingException {
 		
 		log.info("Sending Email to request driver");
 		User driver = us.getUserById(driverId);
 		User user = us.getUserById(userId);
-		Reservation reservation = new Reservation(0, resDate, driver, user, 1);
+		Reservation reservation = new Reservation(0, new Date().toString(), driver, user, 1);
 		reservation = rs.addReservation(reservation);
 		String recipientEmail = driver.getEmail();
 		

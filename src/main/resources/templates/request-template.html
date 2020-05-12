@@ -25,12 +25,10 @@
              Pickup location: <span th:text= "${user.hAddress}"></span>  
         </p>
         <br/>
-        <p>Request date:
-        <span th:text="${#dates.format(subscriptionDate)}">28-12-2012</span>
+        <p><strong>Reservation date is set to:</strong>
+        <span th:text="${#dates.format(reservation.travelDate)}"></span>
         </p>
         <br/>
-        <strong>Reservation date is set to:</strong>
-        <p th:text= "${reservation.travelDate}"/>
         <a th:href= "@{http://localhost:8080/approve(Driver_Id=${driver.userId},User_Id=${user.userId},Reservation_Id=${reservation.reservationId})}" class="button">Approve</a>
         <a th:href= "@{http://localhost:8080/decline(id=${user.userId},Reservation_Id=${reservation.reservationId})}" class="button">Decline</a>
         <br/>
