@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.stereotype.Component;
 
@@ -25,10 +26,11 @@ public class Batch implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@NotNull(message="Must define batch number")
 	@Column(name="batch_number")
 	private int batchNumber;
 	
-	@NotBlank
+	@NotBlank(message="Must define batch location")
 	@Column(name="batch_location")
 	private String batchLocation;
 	

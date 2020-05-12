@@ -26,13 +26,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.maps.errors.ApiException;
 import com.revature.Driver;
 import com.revature.beans.Batch;
-import com.revature.beans.Mail;
 import com.revature.beans.User;
 import com.revature.services.BatchService;
 import com.revature.services.DistanceService;
@@ -67,11 +67,11 @@ public class UserController {
 	
 	@Autowired
 	private DistanceService ds;
-	
-	
+
 	@Autowired
 	private EmailSenderService emailService;
 	
+
 	/**
 	 * HTTP GET method (/users)
 	 * 
@@ -88,7 +88,7 @@ public class UserController {
 		return us.getActiveDrivers();
 	}*/
 	
-	
+   
 	@ApiOperation(value="Returns user drivers", tags= {"User"})
 	@GetMapping("/driver/{address}")
 	public List <User> getTopFiveDrivers(@PathVariable("address")String address) throws ApiException, InterruptedException, IOException {
@@ -305,7 +305,7 @@ public class UserController {
 	 */
 	
 	@ApiOperation(value="Updates user by id", tags= {"User"})
-	@PutMapping
+	@PutMapping("/{id}")
 	public User updateUser(@Valid @RequestBody User user) {
 		//System.out.println(user);
 		return us.updateUser(user);
