@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:remove="all">Ride Request</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+    	<h3>HI, 
+        <span th:text="${user.firstName}"></span></h3>
+        <br/>
+        <h3>Driver:
+        <span th:text="${driver.firstName} + ' ' +  ${driver.lastName}"></span>
+        </h3>
+        <p>Has accepted your ride request!  </p>
+        <br/>
+        <strong>Driver Contact Information:</strong>
+        <ol>
+          <li>Date: <span th:text="${reservation.travelDate}"></span></li>
+		  <li>Email: <span th:text="${driver.email}"></span></li>
+		  <li>Phone: <span th:text="${driver.phoneNumber}"></span></li>
+		</ol>
+        <br/>
+        <p> Contact driver as soon as possible! Thank you for using Revature RideShare.</p>
+      
+      
+            Regards, <br/>
+            &emsp; <em>The Rideshare Team</em>
+        
+    </body>
+</html>
+        

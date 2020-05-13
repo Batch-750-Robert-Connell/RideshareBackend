@@ -2,16 +2,22 @@ package com.revature.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 import javax.validation.Validator;
+import java.security.MessageDigest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,8 +28,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.google.maps.errors.ApiException;
 import com.revature.Driver;
@@ -31,6 +39,8 @@ import com.revature.beans.Batch;
 import com.revature.beans.User;
 import com.revature.services.BatchService;
 import com.revature.services.DistanceService;
+import com.revature.services.EmailSenderService;
+import com.revature.services.MD5Service;
 import com.revature.services.UserService;
 
 import io.swagger.annotations.Api;
@@ -51,6 +61,8 @@ import io.swagger.annotations.ApiOperation;
 @Api(tags= {"User"})
 public class UserController {
 	
+	private static Logger log = LoggerFactory.getLogger(UserController.class);
+	
 	@Autowired
 	private UserService us;
 	
@@ -59,7 +71,14 @@ public class UserController {
 	
 	@Autowired
 	private DistanceService ds;
+
+	@Autowired
+	private EmailSenderService emailService;
 	
+	@Autowired
+	private MD5Service md5;
+	
+
 	/**
 	 * HTTP GET method (/users)
 	 * 
@@ -76,7 +95,7 @@ public class UserController {
 		return us.getActiveDrivers();
 	}*/
 	
-	
+   
 	@ApiOperation(value="Returns user drivers", tags= {"User"})
 	@GetMapping("/driver/{address}")
 	public List <User> getTopFiveDrivers(@PathVariable("address")String address) throws ApiException, InterruptedException, IOException {
@@ -154,6 +173,27 @@ public class UserController {
 		return us.getUserById(id);
 	}
 	
+	
+	/**
+	 * Update emailVerified field
+	 * @param id represents the user's id.
+	 */
+	
+	@ApiOperation(value="Update emailVerified for user by id", tags= {"User"})
+	@GetMapping("/verify-email")
+
+	public RedirectView updateEmailUserById(@RequestParam("id")int id,@RequestParam("token") String token) {
+
+		User user = us.getUserById(id);
+		user.setEmailVerified(true);
+		us.updateUser(user);
+		RedirectView redirectView = new RedirectView();
+	    redirectView.setUrl("http://localhost:4200/");
+	    return redirectView;
+		
+	}
+	
+	
 	/**
 	 * HTTP POST method (/users)
 	 * 
@@ -161,11 +201,12 @@ public class UserController {
 	 * @return The newly created object with a 201 code.
 	 * 
 	 * Sends custom error messages when incorrect input is used
+	 * @throws MessagingException 
 	 */
 	
 	@ApiOperation(value="Adds a new user", tags= {"User"})
 	@PostMapping
-	public Map<String, Set<String>> addUser(@Valid @RequestBody User user, BindingResult result) {
+	public Map<String, Set<String>> addUser(@Valid @RequestBody User user, BindingResult result) throws MessagingException {
 		
 		System.out.println(user.isDriver());
 		 Map<String, Set<String>> errors = new HashMap<>();
@@ -254,11 +295,16 @@ public class UserController {
 		    }
 
 			if (errors.isEmpty()) {
-				
+								
+				log.info("Email sending to verify email");
 				user.setBatch(bs.getBatchByNumber(user.getBatch().getBatchNumber()));
 		 		us.addUser(user);
+		 				 				 		
+		 		String token = MD5Service.getMd5(new Date().toString());
 		 		
-
+		 		// Send email verification when new user registers
+		 		this.emailService.sendVerifyEmail(user, user.getEmail(), token);
+		        log.info("Email send");		 		
 		 	}
 		    return errors;
 		
@@ -291,6 +337,8 @@ public class UserController {
 		
 		return us.deleteUserById(id);
 	}
+	
+
 	
 	
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:remove="all">Ride Request</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+    	<h3>HI, 
+        <span th:text="${user.firstName}"></span></h3>
+        <br/>
+        <p> We are sorry to inform you that your request driver is not available at this time. Please choose another driver from the
+        RideShare app if you still need a ride.</p>
+        <li>Date: <span th:text="${reservation.travelDate}"></span></li>
+        
+        
+        <br/>
+        Regards, <br/>
+            &emsp; <em>The Rideshare Team</em>
+        
+    </body>
+</html>
+        
+        
