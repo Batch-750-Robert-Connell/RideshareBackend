@@ -335,7 +335,7 @@ public class UserController {
 		if(!(oldEmail == newEmail)) {
 			user.setEmailVerified(false);
 			String token = MD5Service.getMd5(new Date().toString());
-			this.emailService.sendVerifyEmail(user, user.getEmail(), token);
+			this.emailService.verifyUpdatedEmail(user, user.getEmail(), token);
 		}
 		return us.updateUser(user);
 	}

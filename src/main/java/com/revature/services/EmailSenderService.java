@@ -30,6 +30,7 @@ public class EmailSenderService {
 	private static final String EMAIL_REQUEST_TEMPLATE_NAME = "request-template.html";
 	private static final String EMAIL_APPROVED_TEMPLATE_NAME = "approve-template.html";
 	private static final String EMAIL_DECLINE_TEMPLATE_NAME = "decline-template.html";
+	private static final String EMAIL_UPDATE_VERIFY_TEMPLATE = "email-update-verify.html";
 
 
 	
@@ -96,6 +97,35 @@ public class EmailSenderService {
 	        // Send email
 	        this.emailsender.send(mimeMessage);
 	    }
+	
+	/*
+	 * Verify email after profile (email)update
+	 */
+	public void verifyUpdatedEmail(User userRegister, final String recipientEmail, String token)
+	        throws MessagingException {
+
+	        // Prepare the evaluation context
+	        final Context ctx = new Context();
+	        User user = userRegister;
+	        ctx.setVariable("user", user);
+	        ctx.setVariable("token", token);	
+	        ctx.setVariable("subscriptionDate", new Date());	        
+
+	        // Prepare message using a Spring helper
+	        final MimeMessage mimeMessage = this.emailsender.createMimeMessage();
+	        final MimeMessageHelper message = new MimeMessageHelper(mimeMessage, "UTF-8");
+	        message.setSubject("Verify your new Rideshare email");
+	        message.setFrom("revaturerideshareapp@gmail.com");
+	        message.setTo(recipientEmail);
+
+	        // Create the HTML body using Thymeleaf
+	        final String htmlContent = this.templateEngine.process(EMAIL_UPDATE_VERIFY_TEMPLATE, ctx);
+	        message.setText(htmlContent, true /* isHtml */);
+
+	        // Send email
+	        this.emailsender.send(mimeMessage);
+	    }
+	
 	
 	public void sendApprovedHtmlEmail(User userReq, User driverReq, Reservation reservation, final String recipientEmail) throws MessagingException{
 		
