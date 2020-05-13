@@ -6,6 +6,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,8 @@ import com.revature.beans.Reservation;
 import com.revature.beans.User;
 import com.revature.services.ReservationService;
 import com.revature.services.UserService;
+import static org.hamcrest.Matchers.hasSize;
+
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ReservationController.class)
@@ -47,11 +52,14 @@ public class ReservationControllerTest {
 		when(us.getUserById(1)).thenReturn(user);
 		User driver = new User(2, "userName2", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
 		when(us.getUserById(2)).thenReturn(driver);
-		Reservation reservation = new Reservation(1, "07-07-2020", driver, user, 1);
-		when(rs.getReservationByDriverId(2)).thenReturn(reservation);
+		List<Reservation> reservations = new ArrayList<>();
+		reservations.add(new Reservation(1, "07-07-2020", driver, user, 1));
+		reservations.add(new Reservation(2, "07-08-2020", driver, user, 1));
+		when(rs.getReservationByDriverId(2)).thenReturn(reservations);
 		mvc.perform(get("/reservations/driver")
 			.param("id", "2"))
-		   .andExpect(status().isOk());
+		   .andExpect(status().isOk())
+		   .andExpect(jsonPath("$", hasSize(2)));
 	}
 
 	
@@ -62,9 +70,9 @@ public class ReservationControllerTest {
 		User driver = new User(2, "userName2", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
 		when(us.getUserById(2)).thenReturn(driver);
 		Reservation reservation = new Reservation(1, "07-07-2020", driver, user, 1);
-		when(rs.getReservationByDriverId(2)).thenReturn(reservation);
+		when(rs.getReservationByDriverIdAndTravelDate(2, "07-07-2020")).thenReturn(reservation);
 		mvc.perform(get("/reservations/travel")
-			.param("id", "1")
+			.param("id", "2")
 			.param("token", "07-07-2020"))
 		   .andExpect(status().isOk());
 	}
@@ -75,11 +83,14 @@ public class ReservationControllerTest {
 		when(us.getUserById(1)).thenReturn(user);
 		User driver = new User(2, "userName2", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
 		when(us.getUserById(2)).thenReturn(driver);
-		Reservation reservation = new Reservation(1, "07-07-2020", driver, user, 1);
-		when(rs.getReservationByDriverId(2)).thenReturn(reservation);
+		List<Reservation> reservations = new ArrayList<>();
+		reservations.add(new Reservation(1, "07-07-2020", driver, user, 1));
+		reservations.add(new Reservation(2, "07-08-2020", driver, user, 1));
+		when(rs.getReservationByRiderId(1)).thenReturn(reservations);
 		mvc.perform(get("/reservations/rider")
 			.param("id", "1"))
-		   .andExpect(status().isOk());
+		   .andExpect(status().isOk())
+		   .andExpect(jsonPath("$", hasSize(2)));
 	}
 	
 	

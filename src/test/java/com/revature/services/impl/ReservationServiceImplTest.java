@@ -3,6 +3,9 @@ package com.revature.services.impl;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -76,9 +79,11 @@ public class ReservationServiceImplTest {
 		when(us.getUserById(1)).thenReturn(user);
 		User driver = new User(2, "userName2", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
 		when(us.getUserById(2)).thenReturn(driver);
-		Reservation expected = new Reservation(1, "07-07-2020", driver, user, 1);
+		List<Reservation> expected = new ArrayList<>();
+		expected.add(new Reservation(1, "07-07-2020", driver, user, 1));
+		expected.add(new Reservation(2, "07-08-2020", driver, user, 1));
 		when(rr.getReservationByRiderId(1)).thenReturn(expected);
-		Reservation actual = rsi.getReservationByRiderId(1);
+		List<Reservation> actual = rsi.getReservationByRiderId(1);
 		assertEquals(expected, actual);
 	}
 	
@@ -88,9 +93,11 @@ public class ReservationServiceImplTest {
 		when(us.getUserById(1)).thenReturn(user);
 		User driver = new User(2, "userName2", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
 		when(us.getUserById(2)).thenReturn(driver);
-		Reservation expected = new Reservation(1, "07-07-2020", driver, user, 1);
+		List<Reservation> expected = new ArrayList<>();
+		expected.add(new Reservation(1, "07-07-2020", driver, user, 1));
+		expected.add(new Reservation(2, "07-08-2020", driver, user, 1));
 		when(rr.getReservationByDriverId(2)).thenReturn(expected);
-		Reservation actual = rsi.getReservationByDriverId(2);
+		List<Reservation> actual = rsi.getReservationByDriverId(2);
 		assertEquals(expected, actual);
 	}
 	

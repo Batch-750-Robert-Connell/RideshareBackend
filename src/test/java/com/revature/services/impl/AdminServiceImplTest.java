@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,15 +37,15 @@ public class AdminServiceImplTest {
 
 	}
 	
-//	@Test
-//	public void testGettingAdminById() {
-//		
-//		Admin expected = new Admin(1, "username");
-//		when(ar.getOne(1)).thenReturn(expected);
-//		Admin actual = asi.getAdminById(1);
-//		
-//		assertEquals(expected, actual);
-//	}
+	@Test
+	public void testGettingAdminById() {
+		
+		Admin expected = new Admin(1, "username");
+		when(ar.findById(1)).thenReturn(Optional.of(expected));
+		Admin actual = asi.getAdminById(1);
+		
+		assertEquals(expected, actual);
+	}
 	
 	@Test
 	public void testCreatingAdmin() {
