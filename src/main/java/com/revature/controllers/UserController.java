@@ -320,13 +320,12 @@ public class UserController {
 	
 	@ApiOperation(value="Updates user by id", tags= {"User"})
 	@PutMapping("/{id}")
-	public User updateUser(@Valid @PathVariable("id") int id, @RequestBody User user) throws MessagingException {
+	public User updateUser(@Valid @RequestBody User user) throws MessagingException {
+		int id = user.getUserId();
 		User oldUser = us.getUserById(id);
 		String oldEmail = oldUser.getEmail();
-		System.out.println(oldEmail);
 		us.updateUser(user);
 		String newEmail = user.getEmail();
-		System.out.println(newEmail);
 		if(!(oldEmail == newEmail)) {
 			user.setEmailVerified(false);
 			String token = MD5Service.getMd5(new Date().toString());
