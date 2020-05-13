@@ -208,7 +208,7 @@ public class UserController {
 	@PostMapping
 	public Map<String, Set<String>> addUser(@Valid @RequestBody User user, BindingResult result) throws MessagingException {
 		
-		System.out.println(user.isDriver());
+		//System.out.println(user.isDriver());
 		 Map<String, Set<String>> errors = new HashMap<>();
 		 
 		 for (FieldError fieldError : result.getFieldErrors()) {
@@ -315,12 +315,22 @@ public class UserController {
 	 * 
 	 * @param user represents the updated User object being sent.
 	 * @return The newly updated object.
+	 * @throws MessagingException 
 	 */
 	
 	@ApiOperation(value="Updates user by id", tags= {"User"})
 	@PutMapping("/{id}")
-	public User updateUser(@Valid @RequestBody User user) {
-		//System.out.println(user);
+	public User updateUser(@Valid @RequestBody User user) throws MessagingException {
+		int id = user.getUserId();
+		User oldUser = us.getUserById(id);
+		String oldEmail = oldUser.getEmail();
+		us.updateUser(user);
+		String newEmail = user.getEmail();
+		if(!(oldEmail == newEmail)) {
+			user.setEmailVerified(false);
+			String token = MD5Service.getMd5(new Date().toString());
+			this.emailService.sendVerifyEmail(user, user.getEmail(), token);
+		}
 		return us.updateUser(user);
 	}
 	
