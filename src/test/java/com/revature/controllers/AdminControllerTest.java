@@ -39,6 +39,10 @@ public class AdminControllerTest {
 	@MockBean
 	private AdminService as;
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingAdmins() throws Exception {
 		
@@ -52,6 +56,10 @@ public class AdminControllerTest {
 		   .andExpect(jsonPath("$", hasSize(2)));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingAdminById() throws Exception {
 		
@@ -63,6 +71,10 @@ public class AdminControllerTest {
 		   .andExpect(jsonPath("$.adminId").value(1));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testCreatingAdmin() throws Exception {
 		
@@ -74,6 +86,10 @@ public class AdminControllerTest {
 		   .andExpect(jsonPath("$").value(admin));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testUpdatingAdmin() throws Exception {
 		
@@ -85,6 +101,10 @@ public class AdminControllerTest {
 		   .andExpect(jsonPath("$").value(admin));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testDeletingAdmin() throws Exception {
 		

@@ -49,22 +49,42 @@ public class Admin implements Serializable {
 		this.userName = userName;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	public int getAdminId() {
 		return adminId;
 	}
 
+	
+	/** 
+	 * @param adminId
+	 */
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getUserName() {
 		return userName;
 	}
 
+	
+	/** 
+	 * @param userName
+	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -74,6 +94,11 @@ public class Admin implements Serializable {
 		return result;
 	}
 
+	
+	/** 
+	 * @param obj
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -94,6 +119,10 @@ public class Admin implements Serializable {
 		return true;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "Admin [adminId=" + adminId + ", userName=" + userName + "]";

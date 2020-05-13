@@ -38,6 +38,10 @@ public class BatchControllerTest {
 	@MockBean
 	private BatchService bs;
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingBatches() throws Exception {
 		
@@ -51,6 +55,10 @@ public class BatchControllerTest {
 		   .andExpect(jsonPath("$", hasSize(2)));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingBatchByNumber() throws Exception {
 		
@@ -62,6 +70,10 @@ public class BatchControllerTest {
 		   .andExpect(jsonPath("$.batchNumber").value(123));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingBatchesByLocation() throws Exception {
 		
@@ -75,6 +87,10 @@ public class BatchControllerTest {
 		   .andExpect(jsonPath("$", hasSize(2)));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testAddingBatch() throws Exception {
 		
@@ -86,6 +102,10 @@ public class BatchControllerTest {
 		   .andExpect(jsonPath("$").value(batch));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testUpdatingBatch() throws Exception {
 		
@@ -97,6 +117,10 @@ public class BatchControllerTest {
 		   .andExpect(jsonPath("$").value(batch));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testDeletingBatch() throws Exception {
 		

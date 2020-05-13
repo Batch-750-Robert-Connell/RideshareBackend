@@ -39,6 +39,10 @@ public class CarControllerTest {
 	@MockBean
 	private CarService cs;
 		
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingCars() throws Exception {
 		
@@ -52,6 +56,10 @@ public class CarControllerTest {
 		   .andExpect(jsonPath("$", hasSize(2)));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingCarById() throws Exception {
 		
@@ -63,6 +71,10 @@ public class CarControllerTest {
 		   .andExpect(jsonPath("$.carId").value(1));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingCarByUserId() throws Exception {
 		
@@ -74,6 +86,10 @@ public class CarControllerTest {
 		   .andExpect(jsonPath("$.carId").value(1));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testAddingCar() throws Exception {
 				
@@ -85,6 +101,10 @@ public class CarControllerTest {
 		   .andExpect(jsonPath("$.color").value("red"));
 	}
 		
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testUpdatingCar() throws Exception {
 		
@@ -96,6 +116,10 @@ public class CarControllerTest {
 		   .andExpect(jsonPath("$.color").value("red"));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testDeletingCar() throws Exception {
 		

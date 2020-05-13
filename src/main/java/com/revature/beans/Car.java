@@ -75,62 +75,122 @@ public class Car implements Serializable {
 		this.user = user;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	public int getCarId() {
 		return carId;
 	}
 
+	
+	/** 
+	 * @param carId
+	 */
 	public void setCarId(int carId) {
 		this.carId = carId;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getColor() {
 		return color;
 	}
 
+	
+	/** 
+	 * @param color
+	 */
 	public void setColor(String color) {
 		this.color = color;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	public int getSeats() {
 		return seats;
 	}
 
+	
+	/** 
+	 * @param seats
+	 */
 	public void setSeats(int seats) {
 		this.seats = seats;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getMake() {
 		return make;
 	}
 
+	
+	/** 
+	 * @param make
+	 */
 	public void setMake(String make) {
 		this.make = make;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getModel() {
 		return model;
 	}
 
+	
+	/** 
+	 * @param model
+	 */
 	public void setModel(String model) {
 		this.model = model;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	public int getYear() {
 		return year;
 	}
 
+	
+	/** 
+	 * @param year
+	 */
 	public void setYear(int year) {
 		this.year = year;
 	}
 
+	
+	/** 
+	 * @return User
+	 */
 	public User getUser() {
 		return user;
 	}
 
+	
+	/** 
+	 * @param user
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -145,6 +205,11 @@ public class Car implements Serializable {
 		return result;
 	}
 
+	
+	/** 
+	 * @param obj
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -185,6 +250,10 @@ public class Car implements Serializable {
 		return year == other.year;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "Car [carId=" + carId + ", color=" + color + ", seats=" + seats + ", make=" + make + ", model=" + model

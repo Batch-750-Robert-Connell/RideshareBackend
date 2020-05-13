@@ -14,6 +14,10 @@ import org.json.simple.parser.ParseException;
 
 public class JSONReaderService {
 	
+	
+	/** 
+	 * @return Map<Integer, String>
+	 */
 	// Method under construction
 	@SuppressWarnings("unchecked")
 	public static Map<Integer, String> dataMapper() {
@@ -64,6 +68,10 @@ public class JSONReaderService {
 		
 	}
 	
+	
+	/** 
+	 * @return ArrayList<Object>
+	 */
 	@SuppressWarnings("unchecked") 
 	public static ArrayList<Object> dataCleaner() {
 
