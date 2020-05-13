@@ -48,8 +48,7 @@ public class EmailController  {
 		User user = us.getUserById(userId);
 		Reservation reservation = new Reservation(0, new Date().toString(), driver, user, 1);
 		reservation = rs.addReservation(reservation);
-		//String recipientEmail = driver.getEmail();
-		String recipientEmail = "josvani.l.rivera@gmail.com";
+		String recipientEmail = driver.getEmail();
 		
     this.emailService.sendRequestHtmlEmail(user,driver, reservation, recipientEmail);
     log.info("Email send");
