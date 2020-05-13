@@ -27,6 +27,15 @@ public class DistanceServiceImpl implements DistanceService {
 	@Autowired
 	private UserService us;
 
+	
+	/** 
+	 * @param origins
+	 * @param destinations
+	 * @return List<User>
+	 * @throws ApiException
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	@Override
 	public List<User> distanceMatrix(String[] origins, String[] destinations) throws ApiException, InterruptedException, IOException {
 		
@@ -142,6 +151,10 @@ public class DistanceServiceImpl implements DistanceService {
 
 	}
 	
+	
+	/** 
+	 * @return String
+	 */
 	public String getGoogleMAPKey() {
         Map<String, String> env = System.getenv();
         for (Map.Entry <String, String> entry: env.entrySet()) {

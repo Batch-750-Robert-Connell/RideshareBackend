@@ -23,6 +23,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository ur;
 	
+	
+	/** 
+	 * @return List<User>
+	 */
 	@Override
 	public List<User> getActiveDrivers() {
 		return ur.getActiveDrivers();

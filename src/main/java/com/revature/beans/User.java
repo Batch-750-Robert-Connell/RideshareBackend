@@ -197,147 +197,295 @@ public class User implements Serializable {
 		this.wZip = wZip;
 		this.wState = wState;
 	}
+	
+	/** 
+	 * @return int
+	 */
 	public int getUserId() {
 		return userId;
 	}
+	
+	/** 
+	 * @param userId
+	 */
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	public String getUserName() {
 		return userName;
 	}
+	
+	/** 
+	 * @param userName
+	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+	
+	/** 
+	 * @return Batch
+	 */
 	public Batch getBatch() {
 		return batch;
 	}
+	
+	/** 
+	 * @param batch
+	 */
 	public void setBatch(Batch batch) {
 		this.batch = batch;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
+	
+	/** 
+	 * @param firstName
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	public String getLastName() {
 		return lastName;
 	}
+	
+	/** 
+	 * @param lastName
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	public String getEmail() {
 		return email;
 	}
+	
+	/** 
+	 * @param email
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+	
+	/** 
+	 * @param phoneNumber
+	 */
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	/** 
+	 * @return boolean
+	 */
 	public boolean isDriver() {
 		return isDriver;
 	}
+	
+	/** 
+	 * @param isDriver
+	 */
 	public void setDriver(boolean isDriver) {
 		this.isDriver = isDriver;
 	}
+	
+	/** 
+	 * @return boolean
+	 */
 	public boolean isActive() {
 		return isActive;
 	}
+	
+	/** 
+	 * @param isActive
+	 */
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+	
+	/** 
+	 * @return boolean
+	 */
 	public boolean isAcceptingRides() {
 		return isAcceptingRides;
 	}
+	
+	/** 
+	 * @param isAcceptingRides
+	 */
 	public void setAcceptingRides(boolean isAcceptingRides) {
 		this.isAcceptingRides = isAcceptingRides;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String gethAddress() {
 		return hAddress;
 	}
 
 
+	
+	/** 
+	 * @param hAddress
+	 */
 	public void sethAddress(String hAddress) {
 		this.hAddress = hAddress;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String gethCity() {
 		return hCity;
 	}
 
 
+	
+	/** 
+	 * @param hCity
+	 */
 	public void sethCity(String hCity) {
 		this.hCity = hCity;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String gethZip() {
 		return hZip;
 	}
 
 
+	
+	/** 
+	 * @param hZip
+	 */
 	public void sethZip(String hZip) {
 		this.hZip = hZip;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String gethState() {
 		return hState;
 	}
 
 
+	
+	/** 
+	 * @param hState
+	 */
 	public void sethState(String hState) {
 		this.hState = hState;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getwAddress() {
 		return wAddress;
 	}
 
 
+	
+	/** 
+	 * @param wAddress
+	 */
 	public void setwAddress(String wAddress) {
 		this.wAddress = wAddress;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getwCity() {
 		return wCity;
 	}
 
 
+	
+	/** 
+	 * @param wCity
+	 */
 	public void setwCity(String wCity) {
 		this.wCity = wCity;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getwZip() {
 		return wZip;
 	}
 
 
+	
+	/** 
+	 * @param wZip
+	 */
 	public void setwZip(String wZip) {
 		this.wZip = wZip;
 	}
 
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getwState() {
 		return wState;
 	}
 
 
+	
+	/** 
+	 * @param wState
+	 */
 	public void setwState(String wState) {
 		this.wState = wState;
 	}
 
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -362,6 +510,11 @@ public class User implements Serializable {
 		result = prime * result + ((wZip == null) ? 0 : wZip.hashCode());
 		return result;
 	}
+	
+	/** 
+	 * @param obj
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -413,6 +566,10 @@ public class User implements Serializable {
 			return false;
 		return true;
 	}
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", userName=" + userName + ", batch=" + batch + ", firstName=" + firstName

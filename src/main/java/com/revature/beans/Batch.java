@@ -43,22 +43,42 @@ public class Batch implements Serializable {
 		this.batchLocation = batchLocation;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	public int getBatchNumber() {
 		return batchNumber;
 	}
 
+	
+	/** 
+	 * @param batchNumber
+	 */
 	public void setBatchNumber(int batchNumber) {
 		this.batchNumber = batchNumber;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	public String getBatchLocation() {
 		return batchLocation;
 	}
 
+	
+	/** 
+	 * @param batchLocation
+	 */
 	public void setBatchLocation(String batchLocation) {
 		this.batchLocation = batchLocation;
 	}
 
+	
+	/** 
+	 * @return int
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -68,6 +88,11 @@ public class Batch implements Serializable {
 		return result;
 	}
 
+	
+	/** 
+	 * @param obj
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -86,6 +111,10 @@ public class Batch implements Serializable {
 		return batchNumber == other.batchNumber;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "Batch [batchNumber=" + batchNumber + ", batchLocation=" + batchLocation + "]";

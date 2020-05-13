@@ -50,6 +50,11 @@ public class LoginController {
 	@Autowired
 	private DistanceService ds;
 	
+	
+	/** 
+	 * @param login(
+	 * @return Map<String, Set<String>>
+	 */
 	@GetMapping//("/{userName}/{passWord}")
 	public Map<String, Set<String>> login(
 							   @RequestParam(name="userName")String userName,
@@ -79,6 +84,10 @@ public class LoginController {
 		}
 	}
 	
+	
+	/** 
+	 * @return Map<String, Set<String>>
+	 */
 	@GetMapping("/getGoogleApi")
 	public Map<String, Set<String>> getGoogleApi() {
 		Map<String, Set<String>> info = new HashMap<>();
