@@ -1,5 +1,7 @@
 package com.revature.services.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +17,7 @@ public class ReservationServiceImpl implements ReservationService {
 	
 	
 	@Override
-	public Reservation getReservationByDriverId(int userId) {
+	public List<Reservation> getReservationByDriverId(int userId) {
 		return rr.getReservationByDriverId(userId);
 	}
 
@@ -25,7 +27,7 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public Reservation getReservationByRiderId(int riderId) {
+	public List<Reservation> getReservationByRiderId(int riderId) {
 		return rr.getReservationByRiderId(riderId);
 	}
 
