@@ -53,7 +53,7 @@ public class ReservationController {
 
     @ApiOperation(value="Returns reservation by driver id", tags= {"Reservation"})
     @GetMapping("/driver")
-    public Reservation getReservationByDriverId(@RequestParam("id") int id) {
+    public List<Reservation> getReservationByDriverId(@RequestParam("id") int id) {
         return rr.getReservationByDriverId(id);
     }
 
@@ -66,7 +66,7 @@ public class ReservationController {
     
 	@ApiOperation(value="Returns reservation by rider id", tags= {"Reservation"})
 	@GetMapping("/rider")
-	public Reservation getReservationByRiderId(@RequestParam("id")int id) {
+	public List<Reservation> getReservationByRiderId(@RequestParam("id")int id) {
 		
 		return rr.getReservationByRiderId(id);
     }

@@ -74,6 +74,31 @@ public class EmailController  {
 
 	}
 	
+	/**
+	 * This method is for the dashboard approval process. When A driver wants to approve a request.
+	 * @param driverId
+	 * @param userId
+	 * @param reservationId
+	 * @return
+	 * @throws MessagingException
+	 */
+	@GetMapping("/approveDash")
+	public String approvedRequestDash(@RequestParam("Driver_Id") final int driverId,
+	 		@RequestParam("User_Id") final int userId, @RequestParam("Reservation_Id") int reservationId) throws MessagingException {
+		
+		log.info("sending approved request message to user");
+		User driver = us.getUserById(driverId);
+		User user = us.getUserById(userId);
+		Reservation reservation = rs.getReservationById(reservationId);
+		reservation.setStatus(2);
+		reservation = rs.updateReservation(reservation);
+		String recipientEmail = user.getEmail();
+		this.emailService.sendApprovedHtmlEmail(user, driver, reservation, recipientEmail);
+		log.info("message sent");
+	    return "approved";
+
+	}
+	
 	@GetMapping("/decline")
 	public RedirectView declineEmail(@RequestParam("id") int userId, @RequestParam("Reservation_Id") int reservationId)throws MessagingException{
     log.info("sending denied request message to user");
@@ -86,6 +111,26 @@ public class EmailController  {
 		RedirectView redirectView = new RedirectView();
 	    redirectView.setUrl("http://localhost:4200/");
 	    return redirectView;
+	}
+	
+	/**
+	 * This method is for the dashboard denied process. When A driver wants to deny a request.
+	 * @param userId
+	 * @param reservationId
+	 * @return
+	 * @throws MessagingException
+	 */
+	@GetMapping("/declineDash")
+	public String declineRequestDash(@RequestParam("id") int userId, @RequestParam("Reservation_Id") int reservationId)throws MessagingException{
+    log.info("sending denied request message to user");
+		User user = us.getUserById(userId);
+		String recipientEmail = user.getEmail();
+		Reservation reservation = rs.getReservationById(reservationId);
+		reservation.setStatus(3);
+		reservation = rs.updateReservation(reservation);
+		this.emailService.sendDeclineEmail(user, reservation, recipientEmail);
+	
+	    return "denied";
 	}
 	
 	
