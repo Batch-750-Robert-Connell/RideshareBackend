@@ -65,6 +65,7 @@ public class User implements Serializable {
 	@NotBlank
 	@Email
 	@Pattern(regexp="^\\w+\\.?\\w+@\\w+\\.[a-zA-Z]{2,4}$")
+	@Column(unique = true)
 	private String email;
 	
 	@NotBlank
