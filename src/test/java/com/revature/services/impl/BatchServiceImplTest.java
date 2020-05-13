@@ -35,15 +35,17 @@ public class BatchServiceImplTest {
 		assertEquals(2, bsi.getBatches().size());
 	}
 	
-//	@Test
-//	public void testGettingBatchByNumber() {
-//		
-//		Batch expected = new Batch(123, "location");
-//		when(br.getOne(123)).thenReturn(expected);
-//		Batch actual = bsi.getBatchByNumber(123);
+	@Test
+	public void testGettingBatchByNumber() {
+		
+		Batch expected = new Batch(1, "location");
+		System.out.println(expected);
+		when(br.getOne(1)).thenReturn(expected);
+		System.out.println(br.getOne(1));
+		Batch actual = bsi.getBatchByNumber(1);
 //		
 //		assertEquals(expected, actual);
-//	}
+	}
 	
 	@Test
 	public void testGettingBatchesByLocation() {
