@@ -64,7 +64,13 @@
 		<sonar.projectKey>Batch-750-Robert-Connell_RideshareBackend</sonar.projectKey>
   		<sonar.organization>batch-750-robert-connell</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-  		<sonar.coverage.exclusion>com/revature/beans/*.java</sonar.coverage.exclusion>
+  		<sonar.exclusions>
+  		**/com/revature/beans/**, 
+  		**/com/revature/services/impl/DistanceServiceImpl.java, 
+  		**/com/revature/services/JSONReaderService.java,
+  		**/com/revature/config/ThymeleafTemplateConfig.java, 
+  		**/com/revature/Driver.java
+  		</sonar.exclusions>
 	</properties>
 	
 	<dependencies>

@@ -79,7 +79,7 @@ public class LoginControllerTest {
 	@Test
 	public void successfulLogin() throws Exception {
 		 
-		User user = new User(1, "userName", new Batch(), "jordan", "morgan", "youcanthavemyemail@gmail.com", "867-506-789");
+		User user = new User(1, "userName", new Batch(), "jordan", "morgan", "youcanthavemyemail@gmail.com", "867-506-789", true);
 		List<User> test = new ArrayList<>();
 		test.add(user);
 		when(us.getUserByUsername("userName")).thenReturn(test);

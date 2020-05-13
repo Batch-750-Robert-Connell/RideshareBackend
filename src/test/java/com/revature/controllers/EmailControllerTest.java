@@ -42,10 +42,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Batch;
+import com.revature.beans.Reservation;
 import com.revature.beans.User;
 import com.revature.services.BatchService;
 import com.revature.services.DistanceService;
 import com.revature.services.EmailSenderService;
+import com.revature.services.ReservationService;
 import com.revature.services.UserService;
 
 import io.swagger.annotations.Api;
@@ -66,18 +68,57 @@ public class EmailControllerTest {
 	private UserService us;
 	
 	@MockBean
+	private ReservationService rs;
+	
+	@MockBean
 	private EmailSenderService ess; 
 	
 	@Test 
 	public void approveEmail() throws Exception {
 
-		User user = new User(1, "userName", new Batch(), "jordan", "morgan", "youcanthavemyemail@gmail.com", "867-506-789");
+		User user = new User(1, "userName", new Batch(), "jordan", "morgan", "youcanthavemyemail@gmail.com", "867-506-789", true);
 		when(us.getUserById(1)).thenReturn(user);
+		User driver = new User(2, "userName2", new Batch(), "jordan", "morgan", "youcanthavemyemail2@gmail.com", "867-506-789", true);
+		when(us.getUserById(2)).thenReturn(driver);
+		Reservation reservation =  new Reservation(1, "07-07-2020", driver, user, 1);
+		when(rs.getReservationById(1)).thenReturn(reservation);
 
 		mvc.perform(get("/approve")
-			.param("Driver_Id", "1")
-			.param("User_Id", "1"))
-			.andExpect(status().isOk());
-			//.andExpect(jsonPath("$redirect").value("sent.html"));
+			.param("Driver_Id", "2")
+			.param("User_Id", "1")
+			.param("Reservation_Id", "1"))
+			.andExpect(status().is3xxRedirection());
 	}
+	
+	
+	@Test 
+	public void declineEmail() throws Exception {
+
+		User user = new User(1, "userName", new Batch(), "jordan", "morgan", "youcanthavemyemail@gmail.com", "867-506-789", true);
+		when(us.getUserById(1)).thenReturn(user);
+		User driver = new User(2, "userName2", new Batch(), "jordan", "morgan", "youcanthavemyemail2@gmail.com", "867-506-789", true);
+		when(us.getUserById(2)).thenReturn(driver);
+		Reservation reservation =  new Reservation(1, "07-07-2020", driver, user, 1);
+		when(rs.getReservationById(1)).thenReturn(reservation);
+
+		mvc.perform(get("/decline")
+			.param("id", "1")
+			.param("Reservation_Id", "1"))
+			.andExpect(status().is3xxRedirection());
+	}
+	
+//	@Test 
+//	public void requestEmail() throws Exception {
+//
+//		User user = new User(1, "userName", new Batch(), "jordan", "morgan", "youcanthavemyemail@gmail.com", "867-506-789", true);
+//		when(us.getUserById(1)).thenReturn(user);
+//		User driver = new User(2, "userName2", new Batch(), "jordan", "morgan", "youcanthavemyemail2@gmail.com", "867-506-789", true);
+//		when(us.getUserById(2)).thenReturn(driver);
+//
+//
+//		mvc.perform(get("/email")
+//			.param("Driver_Id", "2")
+//			.param("User_Id", "1")
+//			.andExpect(status().isOk());
+//	}
 }
