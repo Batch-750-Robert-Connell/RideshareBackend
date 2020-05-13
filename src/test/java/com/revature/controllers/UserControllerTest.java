@@ -27,6 +27,7 @@ import com.revature.beans.User;
 import com.revature.services.BatchService;
 import com.revature.services.DistanceService;
 import com.revature.services.EmailSenderService;
+import com.revature.services.MD5Service;
 import com.revature.services.UserService;
 
 @RunWith(SpringRunner.class)
@@ -50,6 +51,9 @@ public class UserControllerTest {
 	
 	@MockBean
 	private EmailSenderService ess;
+	
+	@MockBean
+	private MD5Service md5;
 	
 	@Test
 	public void testGettingUsers() throws Exception {
