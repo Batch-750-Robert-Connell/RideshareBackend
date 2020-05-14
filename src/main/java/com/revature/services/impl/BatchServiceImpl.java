@@ -43,7 +43,7 @@ public class BatchServiceImpl implements BatchService {
 	
 	@Override
 	public Batch getBatchByNumber(int id) {
-		return br.findById(id).get();
+		return br.findById(id).orElse(null);
 	}
 
 	/**

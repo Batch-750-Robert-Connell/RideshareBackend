@@ -43,7 +43,7 @@ public class CarServiceImpl implements CarService {
 	
 	@Override
 	public Car getCarById(int id) {
-		return cr.findById(id).get();
+		return cr.findById(id).orElse(null);
 	}
 
 	/**
