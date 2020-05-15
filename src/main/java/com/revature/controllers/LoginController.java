@@ -44,7 +44,6 @@ public class LoginController {
 							   @RequestParam(name="userName")String userName,
 							   @RequestParam(name="passWord")String passWord) {
 		
-		System.out.println(userName);
 		Map<String, Set<String>> errors = new HashMap<>();
 		if(userName.length() == 0) {
 		       errors.computeIfAbsent("userName", key -> new HashSet<>()).add("userName required!");
@@ -68,17 +67,17 @@ public class LoginController {
 		}
 	}
 	
-	
-	/** 
-	 * @return Map<String, Set<String>>
-	 */
-	@GetMapping("/getGoogleApi")
-	public Map<String, Set<String>> getGoogleApi() {
-		Map<String, Set<String>> info = new HashMap<>();
-		 // getting API key
-		 String newkey = ds.getGoogleMAPKey();
-		 info.computeIfAbsent("googleMapAPIKey", key -> new HashSet<>()).add(newkey);
-		 return info;
-	}
-	
+//	
+//	/** 
+//	 * @return Map<String, Set<String>>
+//	 */
+//	@GetMapping("/getGoogleApi")
+//	public Map<String, Set<String>> getGoogleApi() {
+//		Map<String, Set<String>> info = new HashMap<>();
+//		 // getting API key
+//		 String newkey = ds.getGoogleMAPKey();
+//		 info.computeIfAbsent("googleMapAPIKey", key -> new HashSet<>()).add(newkey);
+//		 return info;
+//	}
+//	
 }
