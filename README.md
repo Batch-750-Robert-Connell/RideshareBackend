@@ -30,4 +30,4 @@ A note on the GoogleMapsAPI. Obtaining permissions and API keys to deploy and te
 
 ## Internal documentation
 
-Where possible, we have tried to leave a breadcrumb trail throughout the project, particularly in Java docs. These were fully reviewed to ensure that comments accurately reflected the code. We hope and encourage you to do the same. Congratulations for making it this far and we encourage you to make this project your own and turn *Rideshare* into the highest-caliber application it can be. 
+Where possible, we have tried to leave a breadcrumb trail throughout the project, particularly in Java docs. These were fully reviewed to ensure that comments accurately reflected the code. We hope you do the same. Congratulations for making it this far and we encourage you to make this project your own and turn *Rideshare* into the highest-caliber application it can be. 
