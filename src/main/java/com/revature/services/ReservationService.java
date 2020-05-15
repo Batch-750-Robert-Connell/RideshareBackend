@@ -17,5 +17,7 @@ public interface ReservationService {
     public Reservation getReservationById(int reservationId);
     
     public Reservation updateReservation(Reservation reservation);
+    
+    public int getCarSeatsOccupied(int userId);
 
 }

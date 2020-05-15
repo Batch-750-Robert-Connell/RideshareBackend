@@ -26,7 +26,7 @@ insert into users values
 (18, 'wviani@homestead.com', true, 'Wain', '4 Sommers Way', 'Charlotte', 'NC', '28210', false, false, true, 'Vian', '704-338-2790', 'wviani', '99 Delaware Hill', 'Athens', 'GA', '30605', 1),
 (19, 'gtootellj@latimes.com', true, 'Geneva', '27592 La Follette Trail', 'Anaheim', 'CA', '92812', false, false, false, 'Tootell', '714-167-0152', 'gtootellj', '61696 Algoma Park', 'Terre Haute', 'IN', '47812', 1),
 (20, 'cgeertzk@senate.gov', true, 'Cissy', '5 Spaight Court', 'Spring', 'TX', '77386', false, false, true, 'Geertz', '281-310-3238', 'cgeertzk', '3 Dexter Alley', 'Frederick', 'MD', '21705', 1),
-(21, 'lozintsevl@freewebs.com', true, 'Lynn', '112 Silo CT', 'Columbia', 'SC', '29201', true, true, true, 'Ozintsev', '704-108-6483', 'lozintsevl', '38 Muir Plaza', 'Pittsburgh', 'PA', '15210', 1);
+(21, 'lozintsevl@freewebs.com', true, 'Lynn', '112 Silo CT', 'Columbia', 'SC', '29201', false, false, false, 'Ozintsev', '704-108-6483', 'lozintsevl', '38 Muir Plaza', 'Pittsburgh', 'PA', '15210', 1);
 
 insert into cars values 
 (1, 'Teal', 'Ford', 'GT', 3, 2005, 1),
@@ -49,6 +49,7 @@ insert into cars values
 (18, 'Goldenrod', 'Lotus', 'Esprit', 1, 2002, 18),
 (19, 'Red', 'Land Rover', 'Range Rover', 1, 1989, 19),
 (20, 'Pink', 'Mercedes-Benz', 'M-Class', 5, 2000, 20);
+
 
 insert into reservation values 
 (1, 1, '07-07-2020', 2, 6),
