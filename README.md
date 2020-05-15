@@ -1,6 +1,8 @@
 # RideshareBackend API
 
-*Rideshare* is a web application for matching Revature associates and employees with carpool drivers. Think Uber, only for Revature associates. *Rideshare*, originally known under the now-deprecated name _Rideforce_, currently acts as a training tool for graduating batches to gain real life experience with both the technological and organizational challenges of managing and updating legacy code. As it is, *Rideshare* implements an API for authentication and authorization, messaging, and user/driver matching. The development process is unique in that it is continually inherited as legacy code worked on in short bursts by developers with approximately the same knowledge-base and experience level. If you are reading this in preparation for the next sprint, you'll know what that means. 
+*Rideshare* is a web application for matching Revature associates and employees with carpool drivers. Think Uber, only for Revature associates. *Rideshare*, originally known under the now-deprecated name _Rideforce_, currently acts as a training tool for graduating batches to gain real life experience with both the technological and organizational challenges of managing and updating legacy code. 
+
+As it is, *Rideshare* implements an API for authentication and authorization, messaging, and user/driver matching. The development process is unique in that it is continually inherited as legacy code worked on in short bursts by developers with approximately the same knowledge-base and experience level. If you are reading this in preparation for the next sprint, you'll know what that means. 
 
 Consequently, organizational knowledge behind this product is not always readibly accessible when tackling the code base for the first time. Still, we hope that this document can help orient new batches as to what previous design patterns and technolodies we chose, and perhaps even why these were beneficial or detrimental. 
 
