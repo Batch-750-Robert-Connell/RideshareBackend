@@ -52,6 +52,7 @@ public class Admin implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is admin ID
 	 */
 	public int getAdminId() {
 		return adminId;
@@ -60,6 +61,7 @@ public class Admin implements Serializable {
 	
 	/** 
 	 * @param adminId
+	 * admin ID setter
 	 */
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
@@ -68,6 +70,7 @@ public class Admin implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is username
 	 */
 	public String getUserName() {
 		return userName;
@@ -76,6 +79,7 @@ public class Admin implements Serializable {
 	
 	/** 
 	 * @param userName
+	 * username setter 
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
@@ -84,6 +88,7 @@ public class Admin implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is hashcode result 
 	 */
 	@Override
 	public int hashCode() {
@@ -122,6 +127,7 @@ public class Admin implements Serializable {
 	
 	/** 
 	 * @return String
+	 *  
 	 */
 	@Override
 	public String toString() {

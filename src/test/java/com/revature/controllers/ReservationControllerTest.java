@@ -46,6 +46,10 @@ public class ReservationControllerTest {
 	private UserService us;
 	
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetReservationByDriverId() throws Exception {
 		User user = new User(1, "userName", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
@@ -63,6 +67,10 @@ public class ReservationControllerTest {
 	}
 
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetReservationByDriverIdAndTravelDate() throws Exception {
 		User user = new User(1, "userName", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
@@ -77,6 +85,10 @@ public class ReservationControllerTest {
 		   .andExpect(status().isOk());
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGetReservationByRiderId() throws Exception {
 		User user = new User(1, "userName", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
@@ -94,6 +106,10 @@ public class ReservationControllerTest {
 	}
 	
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testAddReservation() throws Exception {
 		User user = new User(1, "userName", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);

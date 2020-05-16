@@ -55,52 +55,111 @@ public class Reservation implements Serializable {
 	@Column(name="status")
 	private int status;
 
+	
+	/** 
+	 * @return int
+	 * value is reservation ID
+	 */
 	public int getReservationId() {
 		return reservationId;
 	}
 
+	
+	/** 
+	 * @param reservationId
+	 * reservation ID setter
+	 */
 	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
 	}
 
+	
+	/** 
+	 * @return String
+	 * value is travel date 
+	 */
 	public String getTravelDate() {
 		return travelDate;
 	}
 
+	
+	/** 
+	 * @param travelDate
+	 * travel date setter 
+	 */
 	public void setTravelDate(String travelDate) {
 		this.travelDate = travelDate;
 	}
 
+	
+	/** 
+	 * @return User
+	 * value is driver User oject
+	 */
 	public User getDriver() {
 		return driver;
 	}
 
+	
+	/** 
+	 * @param driver
+	 * driver setter
+	 */
 	public void setDriver(User driver) {
 		this.driver = driver;
 	}
 
+	
+	/** 
+	 * @return User
+	 * value is rider User oject
+	 */
 	public User getRider() {
 		return rider;
 	}
 
+	
+	/** 
+	 * @param rider
+	 * rider setter 
+	 */
 	public void setRider(User rider) {
 		this.rider = rider;
 	}
 
+	
+	/** 
+	 * @return int
+	 * value is status
+	 */
 	public int getStatus() {
 		return status;
 	}
 
+	
+	/** 
+	 * @param status
+	 * status setter
+	 */
 	public void setStatus(int status) {
 		this.status = status;
 	}
 
+	
+	/** 
+	 * @return String
+	 */
 	@Override
 	public String toString() {
 		return "Reservation [reservationId=" + reservationId + ", travelDate=" + travelDate + ", driver=" + driver
 				+ ", rider=" + rider + ", status=" + status + "]";
 	}
 
+	
+	/** 
+	 * @return int
+	 * value is hashcode result 
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -113,6 +172,11 @@ public class Reservation implements Serializable {
 		return result;
 	}
 
+	
+	/** 
+	 * @param obj
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
