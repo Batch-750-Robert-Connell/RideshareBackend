@@ -47,6 +47,7 @@ public class Batch implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is batch number 
 	 */
 	public int getBatchNumber() {
 		return batchNumber;
@@ -55,6 +56,7 @@ public class Batch implements Serializable {
 	
 	/** 
 	 * @param batchNumber
+	 * batch number setter 
 	 */
 	public void setBatchNumber(int batchNumber) {
 		this.batchNumber = batchNumber;
@@ -63,6 +65,7 @@ public class Batch implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is batch location
 	 */
 	public String getBatchLocation() {
 		return batchLocation;
@@ -71,6 +74,7 @@ public class Batch implements Serializable {
 	
 	/** 
 	 * @param batchLocation
+	 * batch location setter 
 	 */
 	public void setBatchLocation(String batchLocation) {
 		this.batchLocation = batchLocation;
@@ -79,6 +83,7 @@ public class Batch implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is hashcode result
 	 */
 	@Override
 	public int hashCode() {

@@ -55,6 +55,10 @@ public class UserControllerTest {
 	@MockBean
 	private MD5Service md5;
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingUsers() throws Exception {
 		
@@ -68,6 +72,10 @@ public class UserControllerTest {
 		   .andExpect(jsonPath("$", hasSize(2)));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingUserById() throws Exception {
 		
@@ -82,6 +90,10 @@ public class UserControllerTest {
 		   .andExpect(jsonPath("$.userId").value(1));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingUserByUsername() throws Exception {
 		
@@ -94,6 +106,10 @@ public class UserControllerTest {
 		   .andExpect(jsonPath("$[0].userName").value("userName"));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingUserByRole() throws Exception {
 		
@@ -111,6 +127,10 @@ public class UserControllerTest {
 		   .andExpect(jsonPath("$[0].driver").value("true"));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testGettingUserByRoleAndLocation() throws Exception {
 		
@@ -127,6 +147,10 @@ public class UserControllerTest {
 		   .andExpect(jsonPath("$[0].driver").value("true"));
 	}
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testAddingUser() throws Exception {
 		

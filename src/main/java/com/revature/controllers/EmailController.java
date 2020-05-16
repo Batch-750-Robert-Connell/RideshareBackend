@@ -37,6 +37,12 @@ public class EmailController  {
 	@Autowired
 	private ReservationService rs;
 	
+	
+	/** 
+	 * @param requestDriverEmail(
+	 * @return String
+	 * @throws MessagingException
+	 */
 	@GetMapping("/email")
 	 public String requestDriverEmail(
 			 		@RequestParam("Driver_Id") final int driverId,
@@ -55,6 +61,11 @@ public class EmailController  {
     return "Sent email to driver";
 }
 	
+	
+	/** 
+	 * @param @RequestParam("Driver_Id"
+	 * @return RedirectView
+	 */
 	@GetMapping("/approve")
 	public RedirectView approvedEmail(@RequestParam("Driver_Id") final int driverId,
 	 		@RequestParam("User_Id") final int userId, @RequestParam("Reservation_Id") int reservationId) throws MessagingException {
@@ -99,6 +110,13 @@ public class EmailController  {
 
 	}
 	
+	
+	/** 
+	 * @param userId
+	 * @param reservationId
+	 * @return RedirectView
+	 * @throws MessagingException
+	 */
 	@GetMapping("/decline")
 	public RedirectView declineEmail(@RequestParam("id") int userId, @RequestParam("Reservation_Id") int reservationId)throws MessagingException{
     log.info("sending denied request message to user");

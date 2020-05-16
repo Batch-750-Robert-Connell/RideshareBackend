@@ -31,12 +31,22 @@ public class ReservationController {
 	@Autowired
 	private CarService cs;
 
+	
+	/** 
+	 * @param id
+	 * @return List<Reservation>
+	 */
 	@ApiOperation(value = "Returns reservation by driver id", tags = { "Reservation" })
 	@GetMapping("/driver")
 	public List<Reservation> getReservationByDriverId(@RequestParam("id") int id) {
 		return rr.getReservationByDriverId(id);
 	}
 
+	
+	/** 
+	 * @param @RequestParam("id"
+	 * @return Reservation
+	 */
 	@ApiOperation(value = "Returns reservation by driver id and travel date", tags = { "Reservation" })
 	@GetMapping("/travel")
 	public Reservation getReservationByDriverIdAndTravelDate(@RequestParam("id") int id,
@@ -44,6 +54,11 @@ public class ReservationController {
 		return rr.getReservationByDriverIdAndTravelDate(id, travelDate);
 	}
 
+	
+	/** 
+	 * @param id
+	 * @return List<Reservation>
+	 */
 	@ApiOperation(value = "Returns reservation by rider id", tags = { "Reservation" })
 	@GetMapping("/rider")
 	public List<Reservation> getReservationByRiderId(@RequestParam("id") int id) {
@@ -51,18 +66,33 @@ public class ReservationController {
 		return rr.getReservationByRiderId(id);
 	}
 
+	
+	/** 
+	 * @param reservation
+	 * @return ResponseEntity<Reservation>
+	 */
 	@ApiOperation(value = "Adds a new reservation", tags = { "Reservation" })
 	@PostMapping
 	public ResponseEntity<Reservation> addReservation(@Valid @RequestBody Reservation reservation) {
 		return new ResponseEntity<>(rr.addReservation(reservation), HttpStatus.CREATED);
 	}
 
+	
+	/** 
+	 * @param id
+	 * @return int
+	 */
 	@ApiOperation(value = "Returns car seats occupied by driver id", tags = { "Reservation" })
 	@GetMapping("/occupied")
 	public int getOccupiedSeatsByDriverId(@RequestParam("id") int id) {
 		return rr.getCarSeatsOccupied(id);
 	}
 
+	
+	/** 
+	 * @param id
+	 * @return int
+	 */
 	@ApiOperation(value = "Returns car seats occupied by driver id", tags = { "Reservation" })
 	@GetMapping("/seats")
 	public int getAvailableSeatsByDriverId(@RequestParam("id") int id) {

@@ -227,6 +227,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is user ID
 	 */
 	public int getUserId() {
 		return userId;
@@ -234,6 +235,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param userId
+	 * user ID setter
 	 */
 	public void setUserId(int userId) {
 		this.userId = userId;
@@ -241,6 +243,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is userame 
 	 */
 	public String getUserName() {
 		return userName;
@@ -248,6 +251,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param userName
+	 * userame setter
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
@@ -255,6 +259,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return Batch
+	 * value is batch object
 	 */
 	public Batch getBatch() {
 		return batch;
@@ -262,6 +267,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param batch
+	 * batch object setter
 	 */
 	public void setBatch(Batch batch) {
 		this.batch = batch;
@@ -269,6 +275,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is first name
 	 */
 	public String getFirstName() {
 		return firstName;
@@ -276,6 +283,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param firstName
+	 * first name setter
 	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -283,6 +291,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is last name
 	 */
 	public String getLastName() {
 		return lastName;
@@ -290,6 +299,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param lastName
+	 * last name setter 
 	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
@@ -297,6 +307,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is email address
 	 */
 	public String getEmail() {
 		return email;
@@ -304,6 +315,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param email
+	 * email address setter
 	 */
 	public void setEmail(String email) {
 		this.email = email;
@@ -311,6 +323,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is phone number(STRING)
 	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
@@ -318,6 +331,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param phoneNumber
+	 * phone number setter
 	 */
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
@@ -325,6 +339,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return boolean
+	 * value is true or false(isDriver)
 	 */
 	public boolean isDriver() {
 		return isDriver;
@@ -332,6 +347,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param isDriver
+	 * isDriver setter
 	 */
 	public void setDriver(boolean isDriver) {
 		this.isDriver = isDriver;
@@ -339,6 +355,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return boolean
+	 * value is isActive 
 	 */
 	public boolean isActive() {
 		return isActive;
@@ -346,6 +363,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param isActive
+	 * isActive setter
 	 */
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
@@ -353,6 +371,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return boolean
+	 * value is isAcceptingRides
 	 */
 	public boolean isAcceptingRides() {
 		return isAcceptingRides;
@@ -360,95 +379,87 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param isAcceptingRides
+	 * isAcceptingRides setter
 	 */
 	public void setAcceptingRides(boolean isAcceptingRides) {
 		this.isAcceptingRides = isAcceptingRides;
 	}
-
 	
 	/** 
 	 * @return String
+	 * value is home address
 	 */
 	public String gethAddress() {
 		return hAddress;
 	}
-
-
 	
 	/** 
 	 * @param hAddress
+	 * home address setter
 	 */
 	public void sethAddress(String hAddress) {
 		this.hAddress = hAddress;
 	}
-
-
 	
 	/** 
 	 * @return String
+	 * value is home city
 	 */
 	public String gethCity() {
 		return hCity;
 	}
-
-
 	
 	/** 
 	 * @param hCity
+	 * home city setter
 	 */
 	public void sethCity(String hCity) {
 		this.hCity = hCity;
 	}
-
-
 	
 	/** 
 	 * @return String
+	 * value is home zip code(STRING)
 	 */
 	public String gethZip() {
 		return hZip;
 	}
 
-
-	
 	/** 
 	 * @param hZip
+	 * home zip code setter
 	 */
 	public void sethZip(String hZip) {
 		this.hZip = hZip;
 	}
-
-
 	
 	/** 
 	 * @return String
+	 * value is home state
 	 */
 	public String gethState() {
 		return hState;
 	}
 
-
-	
 	/** 
 	 * @param hState
+	 * home state setter
 	 */
 	public void sethState(String hState) {
 		this.hState = hState;
 	}
-
-
 	
 	/** 
 	 * @return String
+	 * value is work address
 	 */
 	public String getwAddress() {
 		return wAddress;
 	}
 
-
-	
 	/** 
 	 * @param wAddress
+	 * work address setter
 	 */
 	public void setwAddress(String wAddress) {
 		this.wAddress = wAddress;
@@ -458,6 +469,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is work city
 	 */
 	public String getwCity() {
 		return wCity;
@@ -467,6 +479,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param wCity
+	 * work city setter 
 	 */
 	public void setwCity(String wCity) {
 		this.wCity = wCity;
@@ -476,6 +489,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is work zip code(STRING)
 	 */
 	public String getwZip() {
 		return wZip;
@@ -485,6 +499,7 @@ public class User implements Serializable {
 	
 	/** 
 	 * @param wZip
+	 * work zip setter
 	 */
 	public void setwZip(String wZip) {
 		this.wZip = wZip;
@@ -494,40 +509,40 @@ public class User implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is work state
 	 */
 	public String getwState() {
 		return wState;
 	}
-
-
 	
 	/** 
 	 * @param wState
+	 * work state setter
 	 */
-
 	public void setwState(String wState) {
 		this.wState = wState;
 	}
 
-
-	
 	/** 
-	 * @return int
+	 * @param emailVerified
+	 * emailVerified setter
 	 */
 	public void setEmailVerified(boolean emailVerified) {
 		this.emailVerified = emailVerified;
 	}
 	
-	
+	/** 
+	 * @return boolean
+	 * value is emailVerified
+	 */
 	public boolean isEmailVerified() {
 		return emailVerified;
 	}
 
-
-
-
-
-
+	/** 
+	 * @return int
+	 * value is hshcode result
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;

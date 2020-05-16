@@ -38,6 +38,11 @@ public class ThymeleafTemplateConfig implements ApplicationContextAware, Environ
     private ApplicationContext applicationContext;
     private Environment environment;
 	
+	
+	/** 
+	 * @return SpringTemplateEngine
+	 * value is templateEngine object
+	 */
 	@Bean
 	public SpringTemplateEngine springTemplateEngine() {
 		final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
@@ -46,6 +51,11 @@ public class ThymeleafTemplateConfig implements ApplicationContextAware, Environ
 	}
 	
 
+	
+	/** 
+	 * @return ITemplateResolver
+	 * value is emailtemplateResolver
+	 */
 	public ITemplateResolver htmlTemplateResolver() {
 		final ClassLoaderTemplateResolver emailTemplateResolver = new ClassLoaderTemplateResolver();
 		emailTemplateResolver.setPrefix("/templates/");
@@ -57,18 +67,34 @@ public class ThymeleafTemplateConfig implements ApplicationContextAware, Environ
 		
 	}
 
+	
+	/** 
+	 * @param environment
+	 * environment setter
+	 */
 	@Override
 	public void setEnvironment(Environment environment) {
 		this.environment = environment;
 		
 	}
 
+	
+	/** 
+	 * @param applicationContext
+	 * @throws BeansException
+	 * application context setter
+	 */
 	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 		
 	}
 	
+	
+	/** 
+	 * @return JavaMailSender
+	 * @throws IOException
+	 */
 	@Bean
     public JavaMailSender mailSender() throws IOException {
 
