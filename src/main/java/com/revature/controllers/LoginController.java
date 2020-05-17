@@ -31,8 +31,7 @@ public class LoginController {
 	@Autowired
 	private UserService us;
 	
-	@Autowired
-	private DistanceService ds;
+
 	
 	
 	/** 
@@ -67,17 +66,5 @@ public class LoginController {
 		}
 	}
 	
-//	
-//	/** 
-//	 * @return Map<String, Set<String>>
-//	 */
-//	@GetMapping("/getGoogleApi")
-//	public Map<String, Set<String>> getGoogleApi() {
-//		Map<String, Set<String>> info = new HashMap<>();
-//		 // getting API key
-//		 String newkey = ds.getGoogleMAPKey();
-//		 info.computeIfAbsent("googleMapAPIKey", key -> new HashSet<>()).add(newkey);
-//		 return info;
-//	}
-//	
+
 }

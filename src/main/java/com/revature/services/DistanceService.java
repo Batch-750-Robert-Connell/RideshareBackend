@@ -10,8 +10,6 @@ public interface DistanceService {
  
 	public List<User> distanceMatrix (String[] origins, String[] destinations) throws ApiException, InterruptedException, IOException ;
 	
-	// Place key googleMapAPIKey & value apiKey (to be shared on slack) into Environment Vars.
-	public  String getGoogleMAPKey();
-	
+
 	
 }
