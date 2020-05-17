@@ -21,4 +21,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     @Query("select r from Reservation r where r.rider.userId = ?1")
     public List<Reservation> getReservationByRiderId(int id);
     
+    @Query(value="SELECT COUNT(*) FROM RESERVATION WHERE (DRIVER_ID = ?1 AND STATUS<3)", nativeQuery = true)
+	public int getCarSeatsOccupied(int userId);
+    
 }

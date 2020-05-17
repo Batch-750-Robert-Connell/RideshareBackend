@@ -69,6 +69,10 @@ public class LoginControllerTest {
 	
 
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void failedLogin() throws Exception {
 		mvc.perform(get("/login/?userName=gpichmann0&passWord=password"))
@@ -76,6 +80,10 @@ public class LoginControllerTest {
 		   .andExpect(jsonPath("userNotFound[0]").value("User not found!"));
 	}
     
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void successfulLogin() throws Exception {
 		 

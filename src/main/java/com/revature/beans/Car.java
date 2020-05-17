@@ -78,6 +78,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is car ID
 	 */
 	public int getCarId() {
 		return carId;
@@ -86,6 +87,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @param carId
+	 * car ID setter 
 	 */
 	public void setCarId(int carId) {
 		this.carId = carId;
@@ -94,6 +96,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is car color 
 	 */
 	public String getColor() {
 		return color;
@@ -102,6 +105,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @param color
+	 * car color setter 
 	 */
 	public void setColor(String color) {
 		this.color = color;
@@ -110,6 +114,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is number of seats
 	 */
 	public int getSeats() {
 		return seats;
@@ -118,6 +123,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @param seats
+	 * car seat setter 
 	 */
 	public void setSeats(int seats) {
 		this.seats = seats;
@@ -126,6 +132,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is car make 
 	 */
 	public String getMake() {
 		return make;
@@ -134,6 +141,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @param make
+	 * car make setter 
 	 */
 	public void setMake(String make) {
 		this.make = make;
@@ -142,6 +150,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @return String
+	 * value is car model
 	 */
 	public String getModel() {
 		return model;
@@ -150,6 +159,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @param model
+	 * car model setter
 	 */
 	public void setModel(String model) {
 		this.model = model;
@@ -158,6 +168,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is car year
 	 */
 	public int getYear() {
 		return year;
@@ -166,6 +177,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @param year
+	 * car year setter
 	 */
 	public void setYear(int year) {
 		this.year = year;
@@ -174,6 +186,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @return User
+	 * value is user oject 
 	 */
 	public User getUser() {
 		return user;
@@ -182,6 +195,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @param user
+	 * user setter 
 	 */
 	public void setUser(User user) {
 		this.user = user;
@@ -190,6 +204,7 @@ public class Car implements Serializable {
 	
 	/** 
 	 * @return int
+	 * value is hashcode result 
 	 */
 	@Override
 	public int hashCode() {

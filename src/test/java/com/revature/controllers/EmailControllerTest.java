@@ -73,6 +73,10 @@ public class EmailControllerTest {
 	@MockBean
 	private EmailSenderService ess; 
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test 
 	public void approveEmail() throws Exception {
 
@@ -91,6 +95,10 @@ public class EmailControllerTest {
 	}
 	
 	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test 
 	public void declineEmail() throws Exception {
 
