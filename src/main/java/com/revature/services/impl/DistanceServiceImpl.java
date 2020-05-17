@@ -23,6 +23,8 @@ import com.revature.services.UserService;
 
 @Service
 public class DistanceServiceImpl implements DistanceService {
+	//Change key to production key
+	private static final String GOOGLE_API_KEY= "AIzaSyDJvLNMwcpEh23n2mMT32YZqzn2XAm2b_c";
 	
 	@Autowired
 	private UserService us;
@@ -39,6 +41,9 @@ public class DistanceServiceImpl implements DistanceService {
 	@Override
 	public List<User> distanceMatrix(String[] origins, String[] destinations) throws ApiException, InterruptedException, IOException {
 		
+		for (String i: origins) {
+		System.out.println(i);
+		}
 		Map<String, User> userDestMap = new HashMap<String, User>();
 		
 		List<String> destinationList = new ArrayList<String>();
@@ -49,7 +54,7 @@ public class DistanceServiceImpl implements DistanceService {
 			String city = d.gethCity();
 			String state = d.gethState();
 			
-			String fullAdd = add + ", " + city + ", " + state;
+			String fullAdd = "{"+ add + ", " + city + ", " + state + "}";
 			
 			destinationList.add(fullAdd);
 			
@@ -57,14 +62,16 @@ public class DistanceServiceImpl implements DistanceService {
 						
 		}
 		
-		//System.out.println(destinationList);
+		System.out.println(destinationList);
 		
 		 destinations = new String[destinationList.size()];
-//		
+		 
+		
+	
 		destinations = destinationList.toArray(destinations);
 		
 		
-		GeoApiContext context = new GeoApiContext.Builder().apiKey(getGoogleMAPKey()).build();
+		GeoApiContext context = new GeoApiContext.Builder().apiKey(GOOGLE_API_KEY).build();
 		List<Double> arrlist = new ArrayList<Double>();
 		DistanceMatrixApiRequest req = DistanceMatrixApi.newRequest(context);
 		DistanceMatrix t = req.origins(origins).destinations(destinations).mode(TravelMode.DRIVING).units(Unit.IMPERIAL)
@@ -106,7 +113,7 @@ public class DistanceServiceImpl implements DistanceService {
 		System.out.println(arrlist);
 		List<String> destList = new ArrayList<String>();
 		
-	     arrlist.removeIf(r ->(arrlist.indexOf(r)>4));
+	   arrlist.removeIf(r ->(arrlist.indexOf(r)>4));
 	     
 			
 			Double [] arrArray = new Double[arrlist.size()];
@@ -152,19 +159,7 @@ public class DistanceServiceImpl implements DistanceService {
 	}
 	
 	
-	/** 
-	 * @return String
-	 */
-	public String getGoogleMAPKey() {
-        Map<String, String> env = System.getenv();
-        for (Map.Entry <String, String> entry: env.entrySet()) {
-            if(entry.getKey().equals("googleMapAPIKey")) {
-                return entry.getValue();
-            }
-        }
-        return null;
-    }
-	
+
 	
 	
 
