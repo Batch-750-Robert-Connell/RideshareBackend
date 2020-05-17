@@ -27,7 +27,7 @@ import com.revature.services.UserService;
 public class DistanceServiceImpl implements DistanceService {
 
 	//Change key to production key
-	private static final String GOOGLE_API_KEY= "AIzaSyDJvLNMwcpEh23n2mMT32YZqzn2XAm2b_c";
+	private static final String GOOGLE_API_KEY= "";
 
 	@Autowired
 	private UserService us;
@@ -50,8 +50,6 @@ public class DistanceServiceImpl implements DistanceService {
 	public List<User> distanceMatrix(String[] origins, String[] destinations) throws ApiException, InterruptedException, IOException {
 		
 	
-	public List<User> distanceMatrix(String[] origins, String[] destinations)
-			throws ApiException, InterruptedException, IOException {
 
 		Map<String, User> userDestMap = new HashMap<String, User>();
 
@@ -155,6 +153,19 @@ public class DistanceServiceImpl implements DistanceService {
 		return userList;
 
 	}
+	
+//	/**
+//	 * @return String
+//	 */
+//	public String getGoogleMAPKey() {
+//		Map<String, String> env = System.getenv();
+//		for (Map.Entry<String, String> entry : env.entrySet()) {
+//			if (entry.getKey().equals("googleMapAPIKey")) {
+//				return entry.getValue();
+//			}
+//		}
+//		return null;
+//	}
 
 
 }
