@@ -93,7 +93,7 @@ public class ReservationController {
 	 * @param id
 	 * @return int
 	 */
-	@ApiOperation(value = "Returns car seats occupied by driver id", tags = { "Reservation" })
+	@ApiOperation(value = "Returns car seats oavailable by driver id", tags = { "Reservation" })
 	@GetMapping("/seats")
 	public int getAvailableSeatsByDriverId(@RequestParam("id") int id) {
 		int available = cs.getCarByUserId(id).getSeats() - rr.getCarSeatsOccupied(id);

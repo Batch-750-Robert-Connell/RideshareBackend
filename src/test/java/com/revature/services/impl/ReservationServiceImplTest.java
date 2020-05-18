@@ -112,6 +112,32 @@ public class ReservationServiceImplTest {
 		Reservation actual = rsi.getReservationByDriverIdAndTravelDate(2, "07-07-2020");
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testAddingReservation() {
+		User user = new User(1, "userName", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
+		when(us.getUserById(1)).thenReturn(user);
+		User driver = new User(2, "userName2", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
+		when(us.getUserById(2)).thenReturn(driver);
+		Reservation expected = new Reservation(1, "07-07-2020", driver, user, 1);
+		when(rr.save(expected)).thenReturn(expected);
+		Reservation actual = rsi.addReservation(expected);
+		assertEquals(expected, actual);
+	}
+	
+	
+	
+	@Test
+	public void testGetCarSeatsOccupied() {
+		User user = new User(1, "userName", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
+		when(us.getUserById(1)).thenReturn(user);
+		User driver = new User(2, "userName2", new Batch(), "umpa", "lumpa", "umpalumpahu@gmail.com", "847-555-1247", true);
+		when(us.getUserById(2)).thenReturn(driver);
+		int expected = 1;
+		when(rr.getCarSeatsOccupied(2)).thenReturn(expected);
+		int actual = rsi.getCarSeatsOccupied(2);
+		assertEquals(expected, actual);
+	}
 
 
 }
