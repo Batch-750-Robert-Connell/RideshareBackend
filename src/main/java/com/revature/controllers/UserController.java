@@ -89,37 +89,21 @@ public class UserController {
 	@GetMapping("/driver/{address}")
 	public List <User> getTopFiveDrivers(@PathVariable("address")String address) throws ApiException, InterruptedException, IOException {
 		//List<User> aps =  new ArrayList<User>();
-		System.out.println(address);
 		List<String> destinationList = new ArrayList<String>();
 		String [] origins = {address};
-//		
 	    Map<String, User> topfive = new HashMap<String, User>();
-//		
 		for(User d : us.getActiveDrivers()) {
-//			
 			String add = d.gethAddress();
 			String city = d.gethCity();
 			String state = d.gethState();
-			
 			String fullAdd = add + ", " + city + ", " + state;
-			
 			destinationList.add(fullAdd);
-//			
 			topfive.put(fullAdd, d);
-//						
-	}
-//		
-//		System.out.println(destinationList);
-//		
+	}	
 		String [] destinations = new String[destinationList.size()];
-////		
 	destinations = destinationList.toArray(destinations);
-//		
 	return	ds.distanceMatrix(origins, destinations);
-//		
-//		
-		//return ds.distanceMatrix();	
-		
+	
 	}
 	
 	/**
@@ -198,11 +182,8 @@ public class UserController {
 	public String addUser(@Valid @RequestBody User user, BindingResult bindingResult) throws MessagingException {
 		
 		if (bindingResult.hasErrors()) {
-			System.out.println("we have errors");
 			return bindingResult.getFieldError().getField() + " " + bindingResult.getFieldError().getDefaultMessage();
 		} else {
-				System.out.println("we don't have errors");
-
 				log.info("Email sending to verify email");
 				user.setBatch(bs.getBatchByNumber(user.getBatch().getBatchNumber()));
 		 		us.addUser(user);
