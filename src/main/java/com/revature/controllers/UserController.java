@@ -213,7 +213,7 @@ public class UserController {
 		 		this.emailService.sendVerifyEmail(user, user.getEmail(), token);
 		        log.info("Email send");		 		
 		 	
-		    return "User creted succsesfully";
+		    return "{}";
 		}	
 		
 	}
