@@ -16,7 +16,6 @@ import com.revature.beans.Batch;
 import com.revature.beans.Reservation;
 import com.revature.beans.User;
 import com.revature.repositories.ReservationRepository;
-import com.revature.repositories.UserRepository;
 import com.revature.services.UserService;
 
 @RunWith(SpringRunner.class)

@@ -68,6 +68,7 @@
   		**/com/revature/beans/**, 
   		**/com/revature/services/impl/DistanceServiceImpl.java, 
   		**/com/revature/services/JSONReaderService.java,
+  		**/com/revature/services/EmailSenderService.java,
   		**/com/revature/config/ThymeleafTemplateConfig.java, 
   		**/com/revature/Driver.java
   		</sonar.exclusions>
