@@ -22,8 +22,10 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Batch;
+import com.revature.beans.Car;
 import com.revature.beans.Reservation;
 import com.revature.beans.User;
+import com.revature.services.CarService;
 import com.revature.services.ReservationService;
 import com.revature.services.UserService;
 import static org.hamcrest.Matchers.hasSize;
@@ -44,6 +46,9 @@ public class ReservationControllerTest {
 	
 	@MockBean
 	private UserService us;
+	
+	@MockBean
+	private CarService cs;
 	
 	
 	
@@ -122,5 +127,17 @@ public class ReservationControllerTest {
 		mvc.perform(post("/reservations").contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsString(reservation)))
 		   .andExpect(status().isCreated())
 		   .andExpect(jsonPath("$.status").value("1"));
+	}
+	
+	
+	/** 
+	 * @throws Exception
+	 */
+	@Test
+	public void testGetOccupiedSeatsByDriverId() throws Exception {
+		when(rs.getCarSeatsOccupied(2)).thenReturn(1);
+		mvc.perform(get("/reservations/rider")
+			.param("id", "2"))
+		   .andExpect(status().isOk());
 	}
 }
