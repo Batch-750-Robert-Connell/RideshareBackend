@@ -17,12 +17,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Batch;
-import com.revature.beans.Car;
 import com.revature.beans.Reservation;
 import com.revature.beans.User;
 import com.revature.services.CarService;
@@ -136,7 +132,7 @@ public class ReservationControllerTest {
 	@Test
 	public void testGetOccupiedSeatsByDriverId() throws Exception {
 		when(rs.getCarSeatsOccupied(2)).thenReturn(1);
-		mvc.perform(get("/reservations/rider")
+		mvc.perform(get("/reservations/occupied")
 			.param("id", "2"))
 		   .andExpect(status().isOk());
 	}
