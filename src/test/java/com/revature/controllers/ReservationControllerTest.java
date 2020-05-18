@@ -24,6 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.beans.Batch;
 import com.revature.beans.Reservation;
 import com.revature.beans.User;
+import com.revature.services.CarService;
 import com.revature.services.ReservationService;
 import com.revature.services.UserService;
 import static org.hamcrest.Matchers.hasSize;
@@ -44,6 +45,9 @@ public class ReservationControllerTest {
 	
 	@MockBean
 	private UserService us;
+	
+	@MockBean
+	private CarService cs;
 	
 	
 	
