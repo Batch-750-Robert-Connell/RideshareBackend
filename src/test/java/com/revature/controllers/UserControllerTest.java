@@ -120,8 +120,6 @@ public class UserControllerTest {
 		user.setAcceptingRides(true);
 		users.add(user);
 		when(us.getUserByRole(true)).thenReturn(users);
-		System.out.println(users);
-		
 		mvc.perform(get("/users?is-driver=true"))
 		   .andExpect(status().isOk())
 		   .andExpect(jsonPath("$[0].driver").value("true"));
@@ -132,16 +130,14 @@ public class UserControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void testGettingUserByRoleAndLocation() throws Exception {
-		
+	public void testGettingUserByRoleAndLocation() throws Exception {		
 		List<User> users = new ArrayList<>();
 		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true);
 		user.setDriver(true);
 		user.setActive(true);
 		user.setAcceptingRides(true);
 		users.add(user);
-		when(us.getUserByRoleAndLocation(true, "location")).thenReturn(users);
-		
+		when(us.getUserByRoleAndLocation(true, "location")).thenReturn(users);		
 		mvc.perform(get("/users?is-driver=true&location=location"))
 		   .andExpect(status().isOk())
 		   .andExpect(jsonPath("$[0].driver").value("true"));
@@ -152,38 +148,49 @@ public class UserControllerTest {
 	 * @throws Exception
 	 */
 	@Test
-	public void testAddingUser() throws Exception {
-		
+	public void testAddingUser() throws Exception {		
 		Batch batch = new Batch(111, "address");
 		User user = new User(1, "userName", batch, "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true);
 		user.setDriver(true);
 		user.setActive(true);
-		user.setAcceptingRides(true);
-		
-		when(us.addUser(user)).thenReturn(user);
-		
+		user.setAcceptingRides(true);		
+		when(us.addUser(user)).thenReturn(user);		
 		mvc.perform(post("/users").contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsString(user)))
 		   .andExpect(status().isOk());
 	}
 	
 	
-	
-//	@Test
-//	public void testUpdatingUser() throws Exception {
-//		Batch batch = new Batch(111, "address");
-//		User user = new User(1, "userName", batch, "adonis", "cabreja", "gpichmann0@artisteer.com", "123-456-7899", true);
-//		user.setDriver(true);
-//		user.setActive(true);
-//		user.setAcceptingRides(true);
-//		when(us.updateUser(user)).thenReturn(user);		
-//		when(us.getUserById(1)).thenReturn(user);		
-//		mvc.perform(put("/users/{id}", 1).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsString(user)))
-//		   .andExpect(status().isOk());
-////		   .andExpect(jsonPath("$.userName").value("userName"));
-//	}
-//	
+	/** 
+	 * @throws Exception
+	 */
+	@Test
+	public void testAddingUser_2() throws Exception {		
+		Batch batch = new Batch(111, "address");
+		User user = new User(1, "userName", batch, "adonis", "cabreja", "gpichmann0@artisteer.com", "123-456-7899", true, true, true, "5 Carpenter Plaza", "New York City", "10277", "NY", "30401 Esker Point", "Des Moines", "50347", "IA", true);		
+		when(us.addUser(user)).thenReturn(user);	
+		mvc.perform(post("/users").contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsString(user)))
+		   .andExpect(status().isOk());
+	}
 	
 	
+	/** 
+	 * @throws Exception
+	 */
+	@Test
+	public void testUpdatingUser() throws Exception {
+		Batch batch = new Batch(111, "address");
+		User user = new User(1, "userName", batch, "adonis", "cabreja", "gpichmann0@artisteer.com", "123-456-7899", true, true, true, "5 Carpenter Plaza", "New York City", "10277", "NY", "30401 Esker Point", "Des Moines", "50347", "IA", true);
+		when(us.updateUser(user)).thenReturn(user);		
+		when(us.getUserById(1)).thenReturn(user);		
+		mvc.perform(put("/users/{id}", 1).contentType(MediaType.APPLICATION_JSON).content(om.writeValueAsString(user)))
+		   .andExpect(status().isOk())
+		   .andExpect(jsonPath("$.userName").value("userName"));
+	}
+	
+	
+	/** 
+	 * @throws Exception
+	 */
 	@Test
 	public void testDeletingUser() throws Exception {		
 		User user = new User(1, "userName", new Batch(), "adonis", "cabreja", "adonis@gmail.com", "123-456-789", true);

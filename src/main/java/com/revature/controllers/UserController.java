@@ -85,26 +85,26 @@ public class UserController {
 	}*/
 	
    
-	@ApiOperation(value="Returns user drivers", tags= {"User"})
-	@GetMapping("/driver/{address}")
-	public List <User> getTopFiveDrivers(@PathVariable("address")String address) throws ApiException, InterruptedException, IOException {
-		//List<User> aps =  new ArrayList<User>();
-		List<String> destinationList = new ArrayList<String>();
-		String [] origins = {address};
-	    Map<String, User> topfive = new HashMap<String, User>();
-		for(User d : us.getActiveDrivers()) {
-			String add = d.gethAddress();
-			String city = d.gethCity();
-			String state = d.gethState();
-			String fullAdd = add + ", " + city + ", " + state;
-			destinationList.add(fullAdd);
-			topfive.put(fullAdd, d);
-	}	
-		String [] destinations = new String[destinationList.size()];
-	destinations = destinationList.toArray(destinations);
-	return	ds.distanceMatrix(origins, destinations);
-	
-	}
+//	@ApiOperation(value="Returns user drivers", tags= {"User"})
+//	@GetMapping("/driver/{address}")
+//	public List <User> getTopFiveDrivers(@PathVariable("address")String address) throws ApiException, InterruptedException, IOException {
+//		//List<User> aps =  new ArrayList<User>();
+//		List<String> destinationList = new ArrayList<String>();
+//		String [] origins = {address};
+//	    Map<String, User> topfive = new HashMap<String, User>();
+//		for(User d : us.getActiveDrivers()) {
+//			String add = d.gethAddress();
+//			String city = d.gethCity();
+//			String state = d.gethState();
+//			String fullAdd = add + ", " + city + ", " + state;
+//			destinationList.add(fullAdd);
+//			topfive.put(fullAdd, d);
+//	}	
+//		String [] destinations = new String[destinationList.size()];
+//	destinations = destinationList.toArray(destinations);
+//	return	ds.distanceMatrix(origins, destinations);
+//	
+//	}
 	
 	/**
 	 * HTTP GET method (/users)
