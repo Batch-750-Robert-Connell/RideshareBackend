@@ -78,12 +78,10 @@ public class UserController {
 	 */
 	
 	
-	/*@ApiOperation(value="Returns user drivers", tags= {"User"})
-	@GetMapping
-	public List<User> getActiveDrivers() {
-		return us.getActiveDrivers();
-	}*/
-	
+
+	/**
+	 * Method below has been deprecated. For complexity and the requirement of the google api key.
+	 */
    
 //	@ApiOperation(value="Returns user drivers", tags= {"User"})
 //	@GetMapping("/driver/{address}")
@@ -161,7 +159,7 @@ public class UserController {
 		user.setEmailVerified(true);
 		us.updateUser(user);
 		RedirectView redirectView = new RedirectView();
-	    redirectView.setUrl("http://localhost:4200/");
+	    redirectView.setUrl("http://34.238.165.243/rideshare-frontend/");
 	    return redirectView;
 		
 	}

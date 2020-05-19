@@ -5,9 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <style>
       .button {
-        background-color: #1c87c9;
+        background-color: #FF5733;
         border: none;
-        color: white;
         padding: 20px 34px;
         text-align: center;
         text-decoration: none;
@@ -29,13 +28,17 @@
         <span th:text="${#dates.format(reservation.travelDate)}"></span>
         </p>
         <br/>
-        <a th:href= "@{http://34.238.165.243/approve(Driver_Id=${driver.userId},User_Id=${user.userId},Reservation_Id=${reservation.reservationId})}" class="button">Approve</a>
-        <a th:href= "@{http://34.238.165.243/decline(id=${user.userId},Reservation_Id=${reservation.reservationId})}" class="button">Decline</a>
+        <a th:href= "@{http://54.67.12.172/approve(Driver_Id=${driver.userId},User_Id=${user.userId},Reservation_Id=${reservation.reservationId})}" class="button">Approve</a>
+        <a th:href= "@{http://54.67.12.172/decline(id=${user.userId},Reservation_Id=${reservation.reservationId})}" class="button">Decline</a>
         <br/>
       
-      
+      <p>
             Regards, <br/>
             &emsp; <em>The Rideshare Team</em>
+       </p>  
+        <a href="">
+        <img src="https://i.ibb.co/yWLXPS5/revature-logo.png" height="110" width="300"/>
+      	</a>
         
     </body>
 </html>

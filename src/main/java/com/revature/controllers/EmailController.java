@@ -77,7 +77,7 @@ public class EmailController  {
 		this.emailService.sendApprovedHtmlEmail(user, driver, reservation, recipientEmail);
 		log.info("message sent");
 		RedirectView redirectView = new RedirectView();
-	    redirectView.setUrl("http://34.238.165.243/");
+	    redirectView.setUrl("http://34.238.165.243/rideshare-frontend/");
 	    return redirectView;
 
 	}
@@ -124,7 +124,7 @@ public class EmailController  {
 		reservation = rs.updateReservation(reservation);
 		this.emailService.sendDeclineEmail(user, reservation, recipientEmail);
 		RedirectView redirectView = new RedirectView();
-	    redirectView.setUrl("http://34.238.165.243/");
+	    redirectView.setUrl("http://34.238.165.243/rideshare-frontend/");
 	    return redirectView;
 	}
 	
