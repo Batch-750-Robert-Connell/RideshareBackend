@@ -23,6 +23,10 @@ import com.revature.services.DistanceService;
 import com.revature.services.ReservationService;
 import com.revature.services.UserService;
 
+/**
+ * Service below has been deprecated. For complexity and the requirement of the google api key. Google api key is implemented in the
+ * Front-end.
+ */
 @Service
 public class DistanceServiceImpl implements DistanceService {
 
